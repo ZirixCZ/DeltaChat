@@ -1,0 +1,12 @@
+/* I told Diego that i can center a div *trollface* */
+.centereddiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+}
+
+.colorblue {
+  color: blue;
+}
+
