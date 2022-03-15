@@ -10,7 +10,7 @@ export default function App() {
   useEffect(() => {
     const socket = socketClient(SERVER);
     socket.on('connection', () => {
-      setLabel('connected');
+      setLabel('Connected');
       socket.on('message', (message) => {
           let li = document.createElement('li');
           document.getElementById('messages').appendChild(li).innerHTML = message;
