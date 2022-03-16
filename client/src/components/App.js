@@ -1,16 +1,17 @@
-import React, { useState, useEffect, createElement } from 'react';
+import React, { useState, useEffect, createElement, useRef } from 'react';
 import socketClient, { io, Socket } from 'socket.io-client'
+import './index.css'
 
 export default function App() {
-  const [connected, setLabel] = useState('not connected');
+  const [connected, setLabel] = useState('Not connected');
   const [message, setMessage] = useState('empty');
   const SERVER = "https://detla-chat-server.herokuapp.com/";
-
+  const messagesEndRef = useRef(null);
 
   useEffect(() => {
     const socket = socketClient(SERVER);
     socket.on('connection', () => {
-      setLabel('Connected_');
+      setLabel('Connected');
       socket.on('message', (message) => {
         messagesEndRef.current?.scrollIntoView();
         let li = document.createElement('li');
