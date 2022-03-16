@@ -12,8 +12,9 @@ export default function App() {
     socket.on('connection', () => {
       setLabel('Connected_');
       socket.on('message', (message) => {
-          let li = document.createElement('li');
-          document.getElementById('messages').appendChild(li).innerHTML = message;
+        messagesEndRef.current?.scrollIntoView();
+        let li = document.createElement('li');
+        document.getElementById('messages').appendChild(li).innerHTML = JSON.parse(message).message;
       })
     });
 
@@ -24,22 +25,40 @@ export default function App() {
   
   return (
     <>
-      <h1>{connected}</h1>
-      <form>
-        <input type="text" id="message-holder"></input>
-        <button id="sender" onClick={(e) => {
-          e.preventDefault()
-          let message = document.getElementById('message-holder');
-          setMessage(message.value);
-          socketClient(SERVER).emit('message', {
-            message: message.value
-          })
-          message.value = ""
-        }}>Send</button>
-      </form>
-      <ul id="messages">
-
-      </ul>
+      <div class="wrapper">
+        <div class="status">
+          <h1>{connected}</h1>
+        </div>
+        <div class="message-wrapper">
+          <ul id="messages"></ul>
+          <div ref={messagesEndRef}></div>
+        </div>
+        <div class="form-wrapper">
+          <form class="sender-form">
+            <input type="text" id="message-holder"></input>
+            <button id="sender" onClick={(e) => {
+              e.preventDefault()
+              let message = document.getElementById('message-holder');
+              let isThere = false;
+              for (let i = 0; i < (message.value).length; i++) {
+                if (message.value[i] != " ") {
+                  isThere = true;
+                }
+              }
+              if (message.value == null || message.value == "" || !isThere) {
+                return;
+              }
+              else {
+                setMessage(message.value);
+                socketClient(SERVER).emit('message', {
+                  message: message.value
+                })
+                message.value = ""
+              }
+            }}>Send</button>
+          </form>
+        </div>
+      </div>
     </>
   )
 }
