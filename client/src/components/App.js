@@ -1,41 +1,49 @@
-import React, { useState, useEffect, createElement, useRef } from 'react';
-import socketClient, { io, Socket } from 'socket.io-client'
-import './index.css'
+import React, { useState, useEffect, useRef } from 'react';
+import socketClient from 'socket.io-client';
+import './index.css';
 
 export default function App() {
-  const [connected, setLabel] = useState('Not connected');
-  const [message, setMessage] = useState('empty');
   const SERVER = "https://detla-chat-server.herokuapp.com/";
+  const [connected, setLabel] = useState('Not connected');
+  const [message, setMessage] = useState(null);
+  // TODO: Find more info about the evil below
+  const [socket] = useState(() => { return socketClient(SERVER) });
   const messagesEndRef = useRef(null);
 
   useEffect(() => {
-    const socket = socketClient(SERVER);
     socket.on('connection', () => {
       setLabel('Connected');
       socket.on('message', (message) => {
+        document.getElementById('messages')
+          .appendChild(document.createElement('li'))
+          .innerHTML = JSON.parse(message).message;
         messagesEndRef.current?.scrollIntoView();
-        let li = document.createElement('li');
-        document.getElementById('messages').appendChild(li).innerHTML = JSON.parse(message).message;
-      })
+      });
     });
-
     return () => {
-      socket.off('connection')
+      socket.off('connection');
     }
-  }, [])
-  
+  }, [socket]);
+
+  useEffect(() => {
+    if (message === null) return;
+    socket.emit('message', {
+      message: message
+    });
+  }, [message]);
+
   return (
     <>
-      <div class="wrapper">
-        <div class="status">
+      <div className="wrapper">
+        <div className="status">
           <h1>{connected}</h1>
         </div>
-        <div class="message-wrapper">
+        <div className="message-wrapper">
           <ul id="messages"></ul>
           <div ref={messagesEndRef}></div>
         </div>
-        <div class="form-wrapper">
-          <form class="sender-form">
+        <div className="form-wrapper">
+          <form className="sender-form">
             <input type="text" id="message-holder"></input>
             <button id="sender" onClick={(e) => {
               e.preventDefault()
@@ -44,18 +52,12 @@ export default function App() {
               for (let i = 0; i < (message.value).length; i++) {
                 if (message.value[i] != " ") {
                   isThere = true;
+                  break
                 }
               }
-              if (message.value == null || message.value == "" || !isThere) {
-                return;
-              }
-              else {
-                setMessage(message.value);
-                socketClient(SERVER).emit('message', {
-                  message: message.value
-                })
-                message.value = ""
-              }
+              if (message.value === null || message.value === "" || !isThere) return;
+              setMessage(message.value);
+              message.value = ""
             }}>Send</button>
           </form>
         </div>
