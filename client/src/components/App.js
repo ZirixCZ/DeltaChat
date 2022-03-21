@@ -4,15 +4,14 @@ import './index.css';
 
 export default function App() {
   const SERVER = "https://detla-chat-server.herokuapp.com/";
-  const [connected, setLabel] = useState('Not connected');
+  const [status, setStatus] = useState('not connected');
   const [message, setMessage] = useState(null);
-  // TODO: Find more info about the evil below
   const [socket] = useState(() => { return socketClient(SERVER) });
   const messagesEndRef = useRef(null);
 
   useEffect(() => {
     socket.on('connection', () => {
-      setLabel('Connected');
+      setStatus('connected');
       socket.on('message', (message) => {
         document.getElementById('messages')
           .appendChild(document.createElement('li'))
@@ -36,7 +35,7 @@ export default function App() {
     <>
       <div className="wrapper">
         <div className="status">
-          <h1>{connected}</h1>
+          <h1>{status}</h1>
         </div>
         <div className="message-wrapper">
           <ul id="messages"></ul>
@@ -44,20 +43,20 @@ export default function App() {
         </div>
         <div className="form-wrapper">
           <form className="sender-form">
-            <input type="text" id="message-holder"></input>
+            <input type="text" id="message-input"></input>
             <button id="sender" onClick={(e) => {
               e.preventDefault()
-              let message = document.getElementById('message-holder');
-              let isThere = false;
-              for (let i = 0; i < (message.value).length; i++) {
-                if (message.value[i] != " ") {
-                  isThere = true;
-                  break
+              let messageInput = document.getElementById('message-input');
+              let isEmpty = true;
+              for (let i = 0; i < (messageInput.value).length; i++) {
+                if (messageInput.value[i] != " ") {
+                  isEmpty = false;
+                  break;
                 }
               }
-              if (message.value === null || message.value === "" || !isThere) return;
-              setMessage(message.value);
-              message.value = ""
+              if (messageInput.value === null || messageInput.value === "" || isEmpty) return;
+              setMessage(messageInput.value);
+              messageInput.value = ""
             }}>Send</button>
           </form>
         </div>
