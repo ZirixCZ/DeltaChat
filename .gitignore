@@ -1,1 +1,3 @@
 .firebase
+client/.firebase
+client/build
