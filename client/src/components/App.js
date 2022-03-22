@@ -11,7 +11,7 @@ export default function App() {
 
   useEffect(() => {
     socket.on('connection', () => {
-      setStatus('connected');
+      setStatus('Connected');
       socket.on('message', (message) => {
         document.getElementById('messages')
           .appendChild(document.createElement('li'))
