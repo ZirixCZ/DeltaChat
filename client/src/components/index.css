@@ -5,7 +5,9 @@ body, html {
     height: 100%;
 }
 
-.wrapper {
+
+
+/* .wrapper {
     width: 100%;
     height: 100vh;
     display: flex;
@@ -64,4 +66,126 @@ body, html {
     text-align: center;
     padding-right: 20px;
     padding-left: 20px;
+} */
+
+
+/* ///////////////////////////////////////////////////////////////////////// */
+
+.content {
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    
+    flex-direction: row;
+
+    font-family: 'Roboto', sans-serif;
+
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(241, 241, 241);
+    position: absolute;
+
+}
+
+.Left {
+    width: 300px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.acc {
+    border-left: 4px rgb(16, 49, 22) solid;
+    border-right: 2px rgb(16, 49, 22) solid;
+    border-top: 4px rgb(16, 49, 22) solid;
+    border-bottom: 2px rgb(16, 49, 22) solid;
+    height: 33%;
+}
+
+.online {
+    border-left: 4px rgb(16, 49, 22) solid;
+    border-right: 2px rgb(16, 49, 22) solid;
+    border-top: 2px rgb(16, 49, 22) solid;
+    border-bottom: 2px rgb(16, 49, 22) solid;
+    height: 33%;
+}
+
+.changelog {
+    border-left: 4px rgb(16, 49, 22) solid;
+    border-right: 2px rgb(16, 49, 22) solid;
+    border-top: 2px rgb(16, 49, 22) solid;
+    border-bottom: 4px rgb(16, 49, 22) solid;
+    height: 33%;
+}
+
+/* ////////////////////////////////// */
+.Right {
+    width: 100%;
+    display: flex;
+
+    flex-direction: column;
+    align-items: stretch;
+}
+
+
+.chat_box {
+    border-left: 2px rgb(16, 49, 22) solid;
+    border-right: 4px rgb(16, 49, 22) solid;
+    border-top: 4px rgb(16, 49, 22) solid;
+    border-bottom: 0px rgb(16, 49, 22) solid;
+
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.input_box {
+    border-top: 0px rgb(16, 49, 22) solid;
+    border-left: 2px rgb(16, 49, 22) solid;
+    border-right: 4px rgb(16, 49, 22) solid;
+    border-bottom: 4px rgb(16, 49, 22) solid;
+    
+    height: 10%;
+}
+
+.in {
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    padding: 5px;
+}
+
+.inp {
+    border-top: 4px green solid;
+    border-left: 4px green solid;
+    border-right: 0px green solid;
+    border-bottom: 4px green solid;
+    color: green;
+
+    width: 90%;
+    outline: none;
+    font-size: 40px;
+}
+
+.btn {
+    outline: none;
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    background-color: none;
+    transition-duration: 0.4s;
+
+    border-top: 4px green solid;
+    border-left: 0px green solid;
+    border-right: 4px green solid;
+    border-bottom: 4px green solid;
+
+    background-color: rgb(170, 170, 170);
+}
+
+.btn:hover {
+    color: white;
+    background-color: green;
 }

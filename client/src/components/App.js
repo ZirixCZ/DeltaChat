@@ -31,20 +31,29 @@ export default function App() {
     });
   }, [message]);
 
+  
+
   return (
     <>
-      <div className="wrapper">
-        <div className="status">
-          <h1>{status}</h1>
-        </div>
-        <div className="message-wrapper">
+<div className="content">
+
+  <div className="Left">
+    <div className="acc"><h1>{status}</h1></div>
+    <div className="online">online</div>
+    <div className="changelog">change</div>
+  </div>
+    
+
+  <div className="Right">
+        <div className="chat_box">
           <ul id="messages"></ul>
           <div ref={messagesEndRef}></div>
         </div>
-        <div className="form-wrapper">
-          <form className="sender-form">
-            <input type="text" id="message-input"></input>
-            <button id="sender" onClick={(e) => {
+
+        <div className="input_box">
+          <div className="in">
+            <input type="text" id="message-input" className="inp"></input>
+            <button className="btn" id="sender" onClick={(e) => {
               e.preventDefault()
               let messageInput = document.getElementById('message-input');
               let isEmpty = true;
@@ -58,9 +67,12 @@ export default function App() {
               setMessage(messageInput.value);
               messageInput.value = ""
             }}>Send</button>
-          </form>
+          </div>
         </div>
-      </div>
+  </div>
+</div>
+
+
     </>
   )
 }
