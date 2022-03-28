@@ -36,42 +36,14 @@ export default function App() {
 
   return (
     <>
-<div className="content">
+      <div className="content">
 
-  <div className="Left">
-    <div className="acc"><h1>{status}</h1></div>
-    <div className="online">online</div>
-    <div className="changelog">change</div>
-  </div>
-    
-
-  <div className="Right">
-        <div className="chat_box">
-          <ul id="messages"></ul>
-          <div ref={messagesEndRef}></div>
+        <div className="Left">
+          <div className="acc"><h1>{status}</h1></div>
+          <div className="online">online</div>
+          <div className="changelog">change</div>
         </div>
 
-        <div className="input_box">
-<form>
-          <div className="in">
-            <input type="text" id="message-input" className="inp"></input>
-            <button className="btn" id="sender" onClick={(e) => {
-              e.preventDefault()
-              let messageInput = document.getElementById('message-input');
-              let isEmpty = true;
-              for (let i = 0; i < (messageInput.value).length; i++) {
-                if (messageInput.value[i] != " ") {
-                  isEmpty = false;
-                  break;
-                }
-              }
-              if (messageInput.value === null || messageInput.value === "" || isEmpty) return;
-              setMessage(messageInput.value);
-              messageInput.value = ""
-            }}>Send</button>
-          </div>
-            </form>
-        </div>
 
         <div className="Right">
           <div className="chat_box">
@@ -80,37 +52,66 @@ export default function App() {
           </div>
 
           <div className="input_box">
-            <div className="in">
-              <input type="text" id="message-input" className="inp"></input>
-              <button
-                className="btn"
-                id="sender"
-                onClick={(e) => {
-                  e.preventDefault();
-                  let messageInput = document.getElementById("message-input");
+            <form>
+              <div className="in">
+                <input type="text" id="message-input" className="inp"></input>
+                <button className="btn" id="sender" onClick={(e) => {
+                  e.preventDefault()
+                  let messageInput = document.getElementById('message-input');
                   let isEmpty = true;
-                  for (let i = 0; i < messageInput.value.length; i++) {
+                  for (let i = 0; i < (messageInput.value).length; i++) {
                     if (messageInput.value[i] != " ") {
                       isEmpty = false;
                       break;
                     }
                   }
-                  if (
-                    messageInput.value === null ||
-                    messageInput.value === "" ||
-                    isEmpty
-                  )
-                    return;
+                  if (messageInput.value === null || messageInput.value === "" || isEmpty) return;
                   setMessage(messageInput.value);
-                  messageInput.value = "";
-                }}
-              >
-                Send
-              </button>
+                  messageInput.value = ""
+                }}>Send</button>
+              </div>
+            </form>
+          </div>
+
+          <div className="Right">
+            <div className="chat_box">
+              <ul id="messages"></ul>
+              <div ref={messagesEndRef}></div>
+            </div>
+
+            <div className="input_box">
+              <div className="in">
+                <input type="text" id="message-input" className="inp"></input>
+                <button
+                  className="btn"
+                  id="sender"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    let messageInput = document.getElementById("message-input");
+                    let isEmpty = true;
+                    for (let i = 0; i < messageInput.value.length; i++) {
+                      if (messageInput.value[i] != " ") {
+                        isEmpty = false;
+                        break;
+                      }
+                    }
+                    if (
+                      messageInput.value === null ||
+                      messageInput.value === "" ||
+                      isEmpty
+                    )
+                      return;
+                    setMessage(messageInput.value);
+                    messageInput.value = "";
+                  }}
+                >
+                  Send
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </>
-  );
+        </div>
+      </>
+      );
 }
