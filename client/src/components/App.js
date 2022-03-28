@@ -51,6 +51,7 @@ export default function App() {
         </div>
 
         <div className="input_box">
+<form>
           <div className="in">
             <input type="text" id="message-input" className="inp"></input>
             <button className="btn" id="sender" onClick={(e) => {
@@ -68,6 +69,7 @@ export default function App() {
               messageInput.value = ""
             }}>Send</button>
           </div>
+            </form>
         </div>
   </div>
 </div>
