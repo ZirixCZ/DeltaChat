@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import socketClient from 'socket.io-client';
 import './index.css';
-
+//TODO: fix naming
 export default function App() {
   const SERVER = "https://detla-chat-server.herokuapp.com/";
   const [status, setStatus] = useState('not connected');
   const [message, setMessage] = useState(null);
   const [socket] = useState(() => { return socketClient(SERVER) });
+  const [name, setName] = useState("noname");
   const messagesEndRef = useRef(null);
 
   useEffect(() => {
@@ -15,18 +16,24 @@ export default function App() {
       socket.on('message', (message) => {
         document.getElementById('messages')
           .appendChild(document.createElement('li'))
-          .innerHTML = JSON.parse(message).message;
+          .innerHTML = JSON.parse(message).name + " " + JSON.parse(message).message;
         messagesEndRef.current?.scrollIntoView();
       });
     });
     return () => {
       socket.off('connection');
     }
-  }, [socket]);
+  }, [socket, name]);
+
+  useEffect(() => {
+    let name = prompt("SET YOUR NAME");
+    setName(name);
+  }, []);
 
   useEffect(() => {
     if (message === null) return;
     socket.emit('message', {
+      name: name,
       message: message
     });
   }, [message]);
