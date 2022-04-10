@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App.js';
+import App from './components/App.jsx';
 
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";

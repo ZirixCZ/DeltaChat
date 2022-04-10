@@ -5,73 +5,7 @@ body, html {
     height: 100%;
 }
 
-
-
-/* .wrapper {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-    background-color: rgb(0, 0, 0);
-}
-.status {
-    display: flex;
-    justify-content: end;
-}
-.wrapper h1 {
-    padding-right: 10px;
-    color: white;
-}
-.form-wrapper {
-    height: 20%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(0, 0, 0);
-
-    border-top: 5px solid black;
-}
-
-.message-wrapper {
-    height: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
-    background-color: rgb(235, 235, 235);
-}
-
-#messages {
-    padding-bottom: 10px;
-}
-
-.sender-form {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#message-input {
-    width: 50%;
-    height: 50px;
-    outline: none;
-    font-size: 25px;
-    border-radius: 3px;
-    border: 6px solid rgb(0, 0, 0);
-}
-
-#sender {
-    height: 53px;
-    text-align: center;
-    padding-right: 20px;
-    padding-left: 20px;
-} */
-
-
-/* ///////////////////////////////////////////////////////////////////////// */
-
-.content {
+.container {
     display: flex;
     justify-content: center;
     justify-items: center;
@@ -82,47 +16,47 @@ body, html {
 
     top: 0%;
     left: 0%;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     background-color: rgb(241, 241, 241);
     position: absolute;
 
 }
 
-.Left {
-    width: 300px;
+.left-container {
+    width: 20vw;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.acc {
-    border-left: 4px rgb(16, 49, 22) solid;
-    border-right: 2px rgb(16, 49, 22) solid;
-    border-top: 4px rgb(16, 49, 22) solid;
-    border-bottom: 2px rgb(16, 49, 22) solid;
+.account-container {
+    border-left: 4px rgb(91, 136, 63) solid;
+    border-right: 2px rgb(91, 136, 63) solid;
+    border-top: 4px rgb(91, 136, 63) solid;
+    border-bottom: 2px rgb(91, 136, 63) solid;
     height: 33%;
 }
 
-.online {
-    border-left: 4px rgb(16, 49, 22) solid;
-    border-right: 2px rgb(16, 49, 22) solid;
-    border-top: 2px rgb(16, 49, 22) solid;
-    border-bottom: 2px rgb(16, 49, 22) solid;
+.online-container {
+    border-left: 4px rgb(91, 136, 63) solid;
+    border-right: 2px rgb(91, 136, 63) solid;
+    border-top: 2px rgb(91, 136, 63) solid;
+    border-bottom: 2px rgb(91, 136, 63) solid;
     height: 33%;
 }
 
-.changelog {
-    border-left: 4px rgb(16, 49, 22) solid;
-    border-right: 2px rgb(16, 49, 22) solid;
-    border-top: 2px rgb(16, 49, 22) solid;
-    border-bottom: 4px rgb(16, 49, 22) solid;
+.changelog-container {
+    border-left: 4px rgb(91, 136, 63) solid;
+    border-right: 2px rgb(91, 136, 63) solid;
+    border-top: 2px rgb(91, 136, 63) solid;
+    border-bottom: 4px rgb(91, 136, 63) solid;
     height: 33%;
 }
 
 /* ////////////////////////////////// */
-.Right {
+.right-container {
     width: 100%;
     display: flex;
 
@@ -131,11 +65,11 @@ body, html {
 }
 
 
-.chat_box {
-    border-left: 2px rgb(16, 49, 22) solid;
-    border-right: 4px rgb(16, 49, 22) solid;
-    border-top: 4px rgb(16, 49, 22) solid;
-    border-bottom: 0px rgb(16, 49, 22) solid;
+.chat-box {
+    border-left: 2px rgb(91, 136, 63) solid;
+    border-right: 4px rgb(91, 136, 63) solid;
+    border-top: 4px rgb(91, 136, 63) solid;
+    border-bottom: 0px rgb(91, 136, 63) solid;
 
     height: 100%;
     overflow-x: hidden;
@@ -143,10 +77,10 @@ body, html {
 }
 
 .input_box {
-    border-top: 0px rgb(16, 49, 22) solid;
-    border-left: 2px rgb(16, 49, 22) solid;
-    border-right: 4px rgb(16, 49, 22) solid;
-    border-bottom: 4px rgb(16, 49, 22) solid;
+    border-top: 0px rgb(91, 136, 63) solid;
+    border-left: 2px rgb(91, 136, 63) solid;
+    border-right: 4px rgb(91, 136, 63) solid;
+    border-bottom: 4px rgb(91, 136, 63) solid;
     
     height: 10%;
     padding-top: 10px;
@@ -159,64 +93,55 @@ body, html {
     padding: 5px;
 }
 
-.inp {
-    border-top: 4px green solid;
-    border-left: 4px green solid;
-    border-right: 0px green solid;
-    border-bottom: 4px green solid;
-    color: green;
-
-    width: 90%;
-    outline: none;
-    font-size: 40px;
+#message-input {
+    width: 100%;
+    padding: 12px 18px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid rgb(91, 136, 63);
+    border-radius: 4px;
+    box-sizing: border-box;
+    outline: rgb(91, 136, 63);
 }
 
-.btn {
-    outline: none;
-    font-size: 20px;
-    color: rgb(0, 0, 0);
-    background-color: none;
-    transition-duration: 0.4s;
-
-    border-top: 4px green solid;
-    border-left: 0px green solid;
-    border-right: 4px green solid;
-    border-bottom: 4px green solid;
-
-    background-color: rgb(170, 170, 170);
-}
-
-.btn:hover {
+#sender {
+    background-color: rgb(91, 136, 63);
+    border: none;
     color: white;
-    background-color: green;
+    padding: 15px 32px;
+    margin: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
 }
 
-.acc-header {
+.account-header {
     display: flex;
     text-align: center;
     justify-content: center;
     align-items: center;
-    background-color: rgb(187, 218, 196);
-    font-size: 21px;
+    background-color: rgb(255, 255, 255);
+    font-size: 2em;
     min-height: 20%;
 }
 
-.acc-content {
+.account-content {
     display: flex;
     text-align: center;
     justify-content: center;
     align-items: center;
-    background-color: rgb(187, 218, 196);
-    font-size: 21px;
+    background-color: rgb(255, 255, 255);
+    font-size: 2em;
     min-height: 20%;
 }
 
-.acc-footer {
+.account-footer {
     display: flex;
     text-align: center;
     justify-content: center;
     align-items: center;
-    font-size: 21px;
+    font-size: 2em;
     min-height: 60%;
 }
 
@@ -228,47 +153,47 @@ body, html {
     height: 30%;
 }
 
-.green-text {
-    color: green;
+.text-green {
+    color: rgb(91, 136, 63);
 }
 
-.onl-header {
+.online-header {
     display: flex;
     text-align: center;
     justify-content: center;
     align-items: center;
     font-size: 21px;
     min-height: 20%;
-    background-color: rgb(187, 218, 196);
+    background-color: rgb(255, 255, 255);
 }
 
-.onl-content {
+.online-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 21px;
+    font-size: 1.5em;
     max-height: 80%;
 
     overflow-x: hidden;
     overflow-y: auto;
 }
 
-.chlog-header {
+.changelog-wrapper {
     display: flex;
     text-align: center;
     justify-content: center;
     align-items: center;
-    font-size: 21px;
+    font-size: 2em;
     min-height: 20%;
     width: 100%;
-    background-color: rgb(187, 218, 196);
+    background-color: rgb(255, 255, 255);
 }
 
-.chlog-content {
+.changelog-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 18px;
+    font-size: 1em;
     max-height: 80%; 
     padding-left: 10px;
     padding-right: 10px;
@@ -277,7 +202,7 @@ body, html {
     overflow-y: auto;
 }
 
-.all-mes {
+#messages {
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
@@ -286,7 +211,7 @@ body, html {
     overflow-x: hidden;
 }
 
-.mes-box {
+.message-box {
     width: 95%;
     font-size: 19px;
     padding-top: 10px;
