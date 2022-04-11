@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useLocation, Link } from "react-router-dom";
 import socketClient from "socket.io-client";
 import "./index.css";
 
@@ -9,8 +10,16 @@ export default function App() {
   const [socket] = useState(() => {
     return socketClient(SERVER);
   });
-  const [name, setName] = useState("Guest");
+  const location = useLocation();
+  const [name, setName] = useState(location.state?.name || "Guest");
   const messagesEndRef = useRef(null);
+
+  const displayCurrentName = () => {
+    if (location.state?.name) {
+      return location.state.name;
+    }
+    return "Guest";
+  };
 
   useEffect(() => {
     socket.on("connection", () => {
@@ -47,10 +56,10 @@ export default function App() {
     });
   }, [message]);
 
-  useEffect(() => {
-    let name = prompt("SET YOUR NAME");
-    setName(name);
-  }, []);
+  // useEffect(() => {
+  //   let name = prompt("SET YOUR NAME");
+  //   setName(name);
+  // }, []);
 
   return (
     <>
@@ -65,7 +74,9 @@ export default function App() {
 
             <div className="account-content">
               <div>
-                <h4 className="text-green"> {name}</h4>
+                <Link className="text-green" to="/Login">
+                  {displayCurrentName()}
+                </Link>
               </div>
             </div>
 

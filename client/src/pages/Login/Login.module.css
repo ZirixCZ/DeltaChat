@@ -1,0 +1,76 @@
+h1 {
+    font-weight: 400;
+    color: rgb(33, 33, 33);
+    font-size: 7em;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    padding-top: 200px;
+}
+.wrapper h1 {
+    padding-bottom: 75px;
+}
+.input {
+    height: 6vh;
+    width: 25vw;
+    background-color: rgb(200, 200, 200);
+    outline: rgb(91, 136, 63) solid 1px;
+    border: none;
+    padding-left: 1em;
+    font-size: 1.5em;
+}
+.input::placeholder {
+    color: black;
+    font-weight: 700;
+}
+#bold {
+    font-weight: 700;
+}
+#green {
+    color: rgb(91, 136, 63);
+}
+.navigateButton {
+    background-color: rgb(91, 136, 63);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    margin: 75px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+    cursor: pointer;
+}
+.navigateButton {
+    background-color: rgb(91, 136, 63);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    margin: 75px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+    cursor: pointer;
+}
+@media screen and (max-width: 1366px) {
+    h1 {
+        margin: 20px;
+        font-size: 3em;
+    }
+    .input {
+        width: 75vw;
+        padding: 20px;
+    }
+    .wrapper {
+        padding-top: 50px;
+    }
+}
