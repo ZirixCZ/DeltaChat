@@ -11,11 +11,11 @@ export default function App() {
     return socketClient(SERVER);
   });
   const location = useLocation();
-  const [name, setName] = useState(location.state.name || "Guest");
+  const [name, setName] = useState(location.state?.name || "Guest");
   const messagesEndRef = useRef(null);
 
   const displayCurrentName = () => {
-    if (location.state.name !== "null") {
+    if (location.state?.name) {
       return location.state.name;
     }
     return "Guest";
