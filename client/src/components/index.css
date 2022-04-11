@@ -81,7 +81,7 @@ body, html {
     border-left: 2px rgb(91, 136, 63) solid;
     border-right: 4px rgb(91, 136, 63) solid;
     border-bottom: 4px rgb(91, 136, 63) solid;
-    
+
     height: 10%;
     padding-top: 10px;
 }
@@ -95,7 +95,7 @@ body, html {
 
 #message-input {
     width: 100%;
-    padding: 12px 18px;
+    padding: 12px 10px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid rgb(91, 136, 63);
