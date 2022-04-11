@@ -145,13 +145,13 @@ body, html {
     min-height: 60%;
 }
 
-.log-btn {
+/* .log-btn {
     background-color: rgb(173, 194, 173);
     font-size: 21px;
     border: 3px green solid;
     border-radius: 5px;
     height: 30%;
-}
+} */
 
 .text-green {
     color: rgb(91, 136, 63);
@@ -211,7 +211,7 @@ body, html {
     overflow-x: hidden;
 }
 
-.message-box {
+.message-container {
     width: 95%;
     font-size: 19px;
     padding-top: 10px;
@@ -227,4 +227,10 @@ body, html {
 .user-text {
     padding: 0px 5px 5px 5px;
     border-left: 2px grey solid;
+}
+
+@media screen and (max-width: 1080px) {
+    .left-container {
+        display: none;
+    }
 }

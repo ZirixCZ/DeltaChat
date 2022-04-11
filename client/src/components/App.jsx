@@ -20,7 +20,7 @@ export default function App() {
         chat.insertAdjacentHTML(
           "afterbegin",
           `
-        <div class="message-box">
+        <div class="message-container">
           <div class="user-name">
             ${JSON.parse(message).name}
           </div>
@@ -105,11 +105,11 @@ export default function App() {
         <div className="right-container">
           <div className="chat-box">
             <div id="messages">
-              <div class="message-box">
+              {/* <div class="message-box">
                 <div class="user-name"></div>
 
                 <div class="user-text"></div>
-              </div>
+              </div> */}
             </div>
             <div ref={messagesEndRef}></div>
           </div>
