@@ -5,12 +5,14 @@ import "./index.css";
 
 export default function App() {
   const SERVER = "https://detla-chat-server.herokuapp.com/";
+  //const SERVER = "http://localhost:8080/";
   const [status, setStatus] = useState("not connected");
   const [message, setMessage] = useState(null);
   const [socket] = useState(() => {
     return socketClient(SERVER);
   });
   const location = useLocation();
+  const [onlineCount, setOnlineCount] = useState(1);
   const [name, setName] = useState(location.state?.name || "Guest");
   const messagesEndRef = useRef(null);
 
@@ -24,6 +26,9 @@ export default function App() {
   useEffect(() => {
     socket.on("connection", () => {
       setStatus("Connected");
+      socket.on("broadcast", (data) => {
+        setOnlineCount(parseInt(JSON.parse(JSON.stringify(data)).count));
+      });
       socket.on("message", (message) => {
         const chat = document.getElementById("messages");
         chat.insertAdjacentHTML(
@@ -46,7 +51,7 @@ export default function App() {
     return () => {
       socket.off("connection");
     };
-  }, [socket, name]);
+  }, [socket]);
 
   useEffect(() => {
     if (message === null) return;
@@ -55,11 +60,6 @@ export default function App() {
       name: name,
     });
   }, [message]);
-
-  // useEffect(() => {
-  //   let name = prompt("SET YOUR NAME");
-  //   setName(name);
-  // }, []);
 
   return (
     <>
@@ -87,7 +87,7 @@ export default function App() {
 
           <div className="online-container">
             <div className="online-header">
-              <div>ONLINE (N)</div>
+              <div>ONLINE ({onlineCount})</div>
             </div>
 
             <div className="online-content">
