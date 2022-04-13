@@ -82,19 +82,19 @@ body, html {
     border-right: 4px rgb(91, 136, 63) solid;
     border-bottom: 4px rgb(91, 136, 63) solid;
 
-    height: 10%;
-    padding-top: 10px;
+    height: min-content;
+    padding-top: 0px;
 }
 
 .in {
     display: flex;
     justify-content: center;
     justify-items: center;
-    padding: 5px;
+    padding-left: 10px;
 }
 
 #message-input {
-    width: 100%;
+    width: 90%;
     padding: 12px 10px;
     margin: 8px 0;
     display: inline-block;
@@ -230,8 +230,49 @@ body, html {
     border-left: 2px grey solid;
 }
 
+@media screen and (min-width: 1080px) {
+    .test {
+        display: none;
+    }   
+}
+
+
+
 @media screen and (max-width: 1080px) {
     .left-container {
         display: none;
     }
+
+    .chat-box {
+        border-left: 4px rgb(91, 136, 63) solid;
+        border-right: 4px rgb(91, 136, 63) solid;
+        border-top: 4px rgb(91, 136, 63) solid;
+        border-bottom: 0px rgb(91, 136, 63) solid;
+    
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .input_box {
+        border-top: 0px rgb(91, 136, 63) solid;
+        border-left: 4px rgb(91, 136, 63) solid;
+        border-right: 4px rgb(91, 136, 63) solid;
+        border-bottom: 4px rgb(91, 136, 63) solid;
+    
+        height: min-content;
+        padding-top: 0px;
+    }
+
+    .test {
+        border-top: 4px rgb(91, 136, 63) solid;
+        border-left: 4px rgb(91, 136, 63) solid;
+        border-right: 4px rgb(91, 136, 63) solid;
+        border-bottom: 0px rgb(91, 136, 63) solid;
+        height: 15%;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }   
 }

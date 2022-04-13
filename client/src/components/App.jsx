@@ -114,6 +114,16 @@ export default function App() {
         </aside>
 
         <div className="right-container">
+          <div className="test">
+            <div>
+                <Link className="text-green" to="/Login">
+                  {displayCurrentName()}
+                </Link>
+            </div>
+            <div>
+                <div>ONLINE (N)</div>
+            </div> 
+          </div>
           <div className="chat-box">
             <div id="messages">
               {/* <div class="message-box">
