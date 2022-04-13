@@ -115,14 +115,18 @@ export default function App() {
 
         <div className="right-container">
           <div className="test">
-            <div>
-                <Link className="text-green" to="/Login">
-                  {displayCurrentName()}
-                </Link>
+            <div className="test-content">
+              <div className="test-name">
+                  {status} like: 
+                  <Link className="text-green" to="/Login">
+                    {displayCurrentName()}
+                  </Link>
+              </div>
+              <div className="test-online">
+                  <div>Online: {onlineCount}</div>
+              </div> 
             </div>
-            <div>
-                <div>{onlineCount}</div>
-            </div> 
+
           </div>
           <div className="chat-box">
             <div id="messages">
