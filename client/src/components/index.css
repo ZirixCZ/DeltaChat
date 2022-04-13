@@ -271,8 +271,26 @@ body, html {
         border-bottom: 0px rgb(91, 136, 63) solid;
         height: 15%;
 
+
+    }
+
+    .test-content {
         display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-    }   
+        flex-direction: column;
+
+        height: 100%;
+        width: 100%;
+        padding-left: 10px;
+        padding-top: 3px;
+    }
+
+    .test-name {
+        height: 50%;
+        font-size: 28px;
+    }
+
+    .test-online {
+        height: 50%;
+        font-size: 23px;
+    }
 }
