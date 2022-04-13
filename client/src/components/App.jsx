@@ -121,7 +121,7 @@ export default function App() {
                 </Link>
             </div>
             <div>
-                <div>ONLINE (N)</div>
+                <div>{onlineCount}</div>
             </div> 
           </div>
           <div className="chat-box">
