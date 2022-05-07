@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useLocation, Link } from "react-router-dom";
 import socketClient from "socket.io-client";
-import "./index.css";
+import style from "./App.module.css";
 
 export default function App() {
   const SERVER = "https://detla-chat-server.herokuapp.com/";
-  //const SERVER = "http://localhost:8080/";
+  // const SERVER = "http://localhost:8080/"; <- USED FOR DEVELOPMENT
   const [status, setStatus] = useState("not connected");
+  const [temporaryMessage, setTemporaryMessage] = useState("");
   const [message, setMessage] = useState(null);
   const [socket] = useState(() => {
     return socketClient(SERVER);
@@ -15,6 +16,7 @@ export default function App() {
   const [onlineCount, setOnlineCount] = useState(1);
   const [name, setName] = useState(location.state?.name || "Guest");
   const messagesEndRef = useRef(null);
+  const messagesRef = useRef(null);
 
   const displayCurrentName = () => {
     if (location.state?.name) {
@@ -30,16 +32,16 @@ export default function App() {
         setOnlineCount(parseInt(JSON.parse(JSON.stringify(data)).count));
       });
       socket.on("message", (message) => {
-        const chat = document.getElementById("messages");
+        const chat = messagesRef.current;
         chat.insertAdjacentHTML(
           "afterbegin",
           `
-        <div class="message-container">
-          <div class="user-name">
+        <div class={style.MessageContainer}>
+          <div class={style.UserName}>
             ${JSON.parse(message).name}
           </div>
 
-          <div class="user-text">
+          <div class={style.UserText}>
             ${JSON.parse(message).message}
           </div>
         </div>
@@ -63,48 +65,44 @@ export default function App() {
 
   return (
     <>
-      <main className="container">
-        <aside className="left-container">
-          <div className="account-container">
-            <div className="account-header">
+      <main className={style.Container}>
+        <aside className={style.LeftContainer}>
+          <div className={style.AccountContainer}>
+            <div className={style.AccountHeader}>
               <div>
-                <h4 className="green-text"> {status} </h4>
+                <h4 className={style.GreenText}> {status} </h4>
               </div>
             </div>
 
-            <div className="account-content">
+            <div className={style.AccountContent}>
               <div>
-                <Link className="text-green" to="/Login">
+                <Link className={style.TextGreen} to="/Login">
                   {displayCurrentName()}
                 </Link>
               </div>
             </div>
-
-            {/* <div className="account-footer">
-              <button className="log-btn">Log out/in</button>
-            </div> */}
           </div>
 
-          <div className="online-container">
-            <div className="online-header">
+          <div className={style.OnlineContainer}>
+            <div className={style.OnlineHeader}>
               <div>ONLINE ({onlineCount})</div>
             </div>
 
-            <div className="online-content">
-              <div className="onl-user">hard.tender.blade</div>
-              <div className="onl-user">hard.tender.blade</div>
-              <div className="onl-user">hard.tender.blade</div>
-              <div className="onl-user">hard.tender.blade</div>
-              <div className="onl-user">hard.tender.blade</div>
+            <div className={style.OnlineContent}>
+              <div className={style.OnlUser}>hard.tender.blade</div>
+              <div className={style.OnlUser}>hard.tender.blade</div>
+              <div className={style.OnlUser}>hard.tender.blade</div>
+              <div className={style.OnlUser}>hard.tender.blade</div>
+              <div className={style.OnlUser}>hard.tender.blade</div>
             </div>
           </div>
 
-          <div className="changelog-container">
-            <div className="changelog-wrapper">
+          <div className={style.ChangelogContainer}>
+            <div className={style.ChangelogWrapper}>
               <div>CHANGELOG</div>
             </div>
 
-            <div className="changelog-content">
+            <div className={style.ChangelogContent}>
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text
               ever since the 1500s, when an unknown printer took a galley of
@@ -113,56 +111,52 @@ export default function App() {
           </div>
         </aside>
 
-        <div className="right-container">
-          <div className="test">
-            <div className="test-content">
-              <div className="test-name">
+        <div className={style.RightContainer}>
+          <div className={style.Test}>
+            <div className={style.TestContent}>
+              <div className={style.TestName}>
                   {status} like: 
-                  <Link className="text-green" to="/Login">
+                  <Link className={style.TextGreen} to="/Login">
                     {displayCurrentName()}
                   </Link>
               </div>
-              <div className="test-online">
+              <div className={style.TestOnline}>
                   <div>Online: {onlineCount}</div>
               </div> 
             </div>
 
           </div>
-          <div className="chat-box">
-            <div id="messages">
-              {/* <div class="message-box">
-                <div class="user-name"></div>
-
-                <div class="user-text"></div>
-              </div> */}
-            </div>
+          <div className={style.ChatBox}>
+            <div className={style.Messages} ref={messagesRef}></div>
             <div ref={messagesEndRef}></div>
           </div>
 
-          <div className="input_box">
+          <div className={style.InputBox}>
             <form>
-              <div className="in">
-                <input type="search" id="message-input"></input>
+              <div className={style.In}>
+                <input type="text" value={temporaryMessage} id={style.messageInput} onChange={(e) => {
+                  setTemporaryMessage(e.target.value);
+                }}></input>
                 <button
                   id="sender"
                   onClick={(e) => {
                     e.preventDefault();
-                    let messageInput = document.getElementById("message-input");
+                    //let messageInput = document.getElementById("message-input");
                     let isEmpty = true;
-                    for (let i = 0; i < messageInput.value.length; i++) {
-                      if (messageInput.value[i] != " ") {
+                    if (temporaryMessage === null || temporaryMessage === "") {
+                      return;
+                    }
+                    for (let i = 0; i < temporaryMessage.length; i++) {
+                      if (temporaryMessage[i] != " ") {
                         isEmpty = false;
                         break;
                       }
                     }
-                    if (
-                      messageInput.value === null ||
-                      messageInput.value === "" ||
-                      isEmpty
-                    )
+                    if (isEmpty)
                       return;
-                    setMessage(messageInput.value);
-                    messageInput.value = "";
+                    setMessage(temporaryMessage);
+                    setTemporaryMessage("");
+
                   }}
                 >
                   Send
