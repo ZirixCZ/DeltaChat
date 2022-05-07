@@ -142,7 +142,7 @@ export default function App() {
           <div className="input_box">
             <form>
               <div className="in">
-                <input type="text" id="message-input"></input>
+                <input type="search" id="message-input"></input>
                 <button
                   id="sender"
                   onClick={(e) => {
