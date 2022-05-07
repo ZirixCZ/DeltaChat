@@ -5,8 +5,9 @@ import style from "./App.module.css";
 
 export default function App() {
   const SERVER = "https://detla-chat-server.herokuapp.com/";
-  //const SERVER = "http://localhost:8080/";
+  // const SERVER = "http://localhost:8080/"; <- USED FOR DEVELOPMENT
   const [status, setStatus] = useState("not connected");
+  const [temporaryMessage, setTemporaryMessage] = useState("");
   const [message, setMessage] = useState(null);
   const [socket] = useState(() => {
     return socketClient(SERVER);
@@ -15,6 +16,7 @@ export default function App() {
   const [onlineCount, setOnlineCount] = useState(1);
   const [name, setName] = useState(location.state?.name || "Guest");
   const messagesEndRef = useRef(null);
+  const messagesRef = useRef(null);
 
   const displayCurrentName = () => {
     if (location.state?.name) {
@@ -30,7 +32,7 @@ export default function App() {
         setOnlineCount(parseInt(JSON.parse(JSON.stringify(data)).count));
       });
       socket.on("message", (message) => {
-        const chat = document.getElementById("messages");
+        const chat = messagesRef.current;
         chat.insertAdjacentHTML(
           "afterbegin",
           `
@@ -64,7 +66,7 @@ export default function App() {
   return (
     <>
       <main className={style.Container}>
-        <aside className={style.CeftContainer}>
+        <aside className={style.LeftContainer}>
           <div className={style.AccountContainer}>
             <div className={style.AccountHeader}>
               <div>
@@ -79,10 +81,6 @@ export default function App() {
                 </Link>
               </div>
             </div>
-
-            {/* <div className={style.AccountFooter}>
-              <button className={style.LogBtn}>Log out/in</button>
-            </div> */}
           </div>
 
           <div className={style.OnlineContainer}>
@@ -129,40 +127,36 @@ export default function App() {
 
           </div>
           <div className={style.ChatBox}>
-            <div id="messages">
-              {/* <div class="MessageBox">
-                <div class="UserName"></div>
-
-                <div class="UserText"></div>
-              </div> */}
-            </div>
+            <div className={style.Messages} ref={messagesRef}></div>
             <div ref={messagesEndRef}></div>
           </div>
 
           <div className={style.InputBox}>
             <form>
               <div className={style.In}>
-                <input type="text" id="message-input"></input>
+                <input type="text" value={temporaryMessage} id={style.messageInput} onChange={(e) => {
+                  setTemporaryMessage(e.target.value);
+                }}></input>
                 <button
                   id="sender"
                   onClick={(e) => {
                     e.preventDefault();
-                    let messageInput = document.getElementById("message-input");
+                    //let messageInput = document.getElementById("message-input");
                     let isEmpty = true;
-                    for (let i = 0; i < messageInput.value.length; i++) {
-                      if (messageInput.value[i] != " ") {
+                    if (temporaryMessage === null || temporaryMessage === "") {
+                      return;
+                    }
+                    for (let i = 0; i < temporaryMessage.length; i++) {
+                      if (temporaryMessage[i] != " ") {
                         isEmpty = false;
                         break;
                       }
                     }
-                    if (
-                      messageInput.value === null ||
-                      messageInput.value === "" ||
-                      isEmpty
-                    )
+                    if (isEmpty)
                       return;
-                    setMessage(messageInput.value);
-                    messageInput.value = "";
+                    setMessage(temporaryMessage);
+                    setTemporaryMessage("");
+
                   }}
                 >
                   Send
