@@ -1,8 +1,10 @@
 h1 {
-    font-family: 'Roboto', sans-serif;
     font-weight: 400;
     color: rgb(33, 33, 33);
     font-size: 7em;
+}
+.styles.text {
+    font-family: 'Roboto', sans-serif;
 }
 .container {
     display: flex;

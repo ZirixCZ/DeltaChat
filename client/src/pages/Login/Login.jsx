@@ -192,7 +192,7 @@ export default function Login() {
     <>
       <main className={styles.container}>
         <div className={styles.wrapper}>
-          <h1>
+          <h1 className={styles.text}>
             Vítejte v{" "}
             <span id={styles.bold}>
               <span id={styles.green}>Delta</span>Chatu
