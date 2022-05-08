@@ -13,7 +13,7 @@ export default function App() {
     return socketClient(SERVER);
   });
   const location = useLocation();
-  const [onlineCount, setOnlineCount] = useState(1);
+  const [onlineCount, setOnlineCount] = useState(0);
   const [name, setName] = useState(location.state?.name || "Guest");
   const messagesEndRef = useRef(null);
   const messagesRef = useRef(null);
@@ -36,14 +36,14 @@ export default function App() {
         chat.insertAdjacentHTML(
           "afterbegin",
           `
-        <div class={style.MessageContainer}>
-          <div class={style.UserName}>
+        <div className={style.MessageContainer}>
+          <h3 className={style.UserName} style={{ color: "red" }}>
             ${JSON.parse(message).name}
-          </div>
+          </h3>
 
-          <div class={style.UserText}>
+          <h4 className={style.UserText}>
             ${JSON.parse(message).message}
-          </div>
+          </h4>
         </div>
         `
         );
@@ -138,7 +138,7 @@ export default function App() {
                   setTemporaryMessage(e.target.value);
                 }}></input>
                 <button
-                  id="sender"
+                  className={style.sender}
                   onClick={(e) => {
                     e.preventDefault();
                     //let messageInput = document.getElementById("message-input");
@@ -147,7 +147,7 @@ export default function App() {
                       return;
                     }
                     for (let i = 0; i < temporaryMessage.length; i++) {
-                      if (temporaryMessage[i] != " ") {
+                      if (temporaryMessage[i] !== " ") {
                         isEmpty = false;
                         break;
                       }
