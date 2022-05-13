@@ -1,38 +1,59 @@
 const http = require('http').createServer();
 const io = require("socket.io")(http, {
     cors: {
-        //origin: "http://localhost:3000", <- for development, note: IT SHOULDN'T END WITH "/" !!!
+        //origin: "http://localhost:3000",
         origin: "*",
         methods: ["GET", "POST"],
         allowedHeaders: ["header"],
         credentials: true
     }
 });
-
 const PORT = process.env.PORT || 8080;
 let connectedUserCount = 0;
+let connecteduserNames = [];
 
 http.listen(PORT, () => {
     console.log(`listening on ${PORT}`);
 });
 
-io.on('connection', (socket) => {
-    connectedUserCount++;
-    console.log(`new client connected\nid:${socket.id}`);
-    socket.emit('connection', null);
+const removeNameFromArray = (nameToRemove) => {
+    for (let index = 0; index < connecteduserNames.length; index++) {
+        if (nameToRemove === connecteduserNames[index]) {
+            connecteduserNames.splice(index, 1);
+        }
+    }
+}
+
+const stateBroadcast = () => {
     io.sockets.emit('broadcast', {
         count: connectedUserCount,
+        names: connecteduserNames
     });
+}
+
+io.on('connection', (socket) => {
+    connectedUserCount++;
+    socket.emit('connection', null);
+    console.log(`new client connected\nid:${socket.id}`);
+    stateBroadcast();
     socket.on('message', (message) => {
         console.log(JSON.stringify(message))
         io.emit('message', JSON.stringify(message));
     })
-    socket.on('disconnect', () => {
+    socket.on('addUser', (name) => {
+        connecteduserNames.push(name);
+        console.log(connecteduserNames);
+        stateBroadcast();
+    })
+    socket.on('deleteUser', (name) => {
         connectedUserCount--;
-        console.log('client has disconnected')
-        io.sockets.emit('broadcast', {
-            count: connectedUserCount,
-        });
+        removeNameFromArray(name);
+        console.log(name);
+        stateBroadcast();
+    })
+    socket.on('disconnect', () => {
+        console.log('client has disconnected');
+        stateBroadcast();
         io.emit("client has disconnected");
     })
 })

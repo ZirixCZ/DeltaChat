@@ -47,6 +47,10 @@ body, html {
     height: 33%;
 }
 
+.OnlineParagraph {
+    margin: 0.5rem;
+}
+
 .ChangelogContainer {
     border-left: 4px rgb(91, 136, 63) solid;
     border-right: 2px rgb(91, 136, 63) solid;
@@ -176,8 +180,11 @@ body, html {
     font-size: 1.5em;
     max-height: 80%;
 
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column-reverse;
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: scroll;
 }
 
 .ChangelogWrapper {
@@ -195,13 +202,16 @@ body, html {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 1em;
+    font-size: 1.25em;
     max-height: 80%; 
     padding-left: 10px;
     padding-right: 10px;
 
     overflow-x: hidden;
     overflow-y: auto;
+}
+.ChangelogContainer li {
+    margin: 20px;
 }
 
 .Messages {
