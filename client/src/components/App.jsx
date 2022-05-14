@@ -39,8 +39,8 @@ export default function App() {
         console.log(`dELETING USER ${name}`)
         socket.emit('deleteUser', name);
     }
-    //const SERVER = "https://detla-chat-server.herokuapp.com/";
-    const SERVER = "http://localhost:8080/";
+    const SERVER = "https://detla-chat-server.herokuapp.com/";
+    //const SERVER = "http://localhost:8080/";
     const [status, setStatus] = useState("not connected");
     const [temporaryMessage, setTemporaryMessage] = useState("");
     const [message, setMessage] = useState(null);

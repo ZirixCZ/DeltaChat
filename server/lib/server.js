@@ -1,8 +1,8 @@
 const http = require('http').createServer();
 const io = require("socket.io")(http, {
     cors: {
-        origin: "http://localhost:3000",
-        //origin: "*",
+        //origin: "http://localhost:3000",
+        origin: "*",
         methods: ["GET", "POST"],
         allowedHeaders: ["header"],
         credentials: true
