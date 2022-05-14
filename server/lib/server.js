@@ -1,15 +1,14 @@
 const http = require('http').createServer();
 const io = require("socket.io")(http, {
     cors: {
-        //origin: "http://localhost:3000",
-        origin: "*",
+        origin: "http://localhost:3000",
+        //origin: "*",
         methods: ["GET", "POST"],
         allowedHeaders: ["header"],
         credentials: true
     }
 });
 const PORT = process.env.PORT || 8080;
-let connectedUserCount = 0;
 let connecteduserNames = [];
 
 http.listen(PORT, () => {
@@ -22,17 +21,18 @@ const removeNameFromArray = (nameToRemove) => {
             connecteduserNames.splice(index, 1);
         }
     }
+    connecteduserNames = connecteduserNames.filter((c, index) => {
+        return connecteduserNames.indexOf(c) === index;
+    })
 }
 
 const stateBroadcast = () => {
     io.sockets.emit('broadcast', {
-        count: connectedUserCount,
+        count: connecteduserNames.length,
         names: connecteduserNames
     });
 }
-
 io.on('connection', (socket) => {
-    connectedUserCount++;
     socket.emit('connection', null);
     console.log(`new client connected\nid:${socket.id}`);
     stateBroadcast();
@@ -42,18 +42,20 @@ io.on('connection', (socket) => {
     })
     socket.on('addUser', (name) => {
         connecteduserNames.push(name);
-        console.log(connecteduserNames);
+        removeNameFromArray();
         stateBroadcast();
+        console.log(connecteduserNames);
     })
     socket.on('deleteUser', (name) => {
-        connectedUserCount--;
+        console.log(`erasing ${name}`)
         removeNameFromArray(name);
-        console.log(name);
         stateBroadcast();
     })
-    socket.on('disconnect', () => {
-        console.log('client has disconnected');
+    socket.on('disconnect', (reason) => {
+        console.log(reason)
+        console.log(`client disconnected ${reason}`);
+        removeNameFromArray(reason);
         stateBroadcast();
-        io.emit("client has disconnected");
+        io.sockets.emit("logMessage", "user has disconnected");
     })
 })

@@ -1,27 +1,110 @@
 import React, {useEffect, useRef, useState} from "react";
-import {Link, useLocation} from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
+import {useBeforeunload} from "react-beforeunload";
 import socketClient from "socket.io-client";
 import style from "./App.module.css";
 
 export default function App() {
-    const SERVER = "https://detla-chat-server.herokuapp.com/";
-    //const SERVER = "http://localhost:8080/";
+    const location = useLocation();
+    const navigate = useNavigate();
+    const [name, setName] = useState(location.state?.name || "Guest");
+/*    useEffect(() => {
+        console.log(name)
+    }, [name])*/
+/*    const changeNameState = () => {
+        if (location.state?.name) {
+            setName(location.state?.name);
+        }
+    }
+    let tName = name;*/
+
+/*    useEffect(() => {
+        if (name === null || name === undefined) return
+        if (name) {
+            tName = name;
+        }
+    }, [name])*/
+/*    window.addEventListener('beforeunload', (event) => {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        event.returnValue = 'unused string';
+        changeNameState();
+        console.log(`dELETING USER ${displayCurrentName(tName)}`)
+        socket.emit('deleteUser', displayCurrentName(tName));
+    });*/
+    window.onbeforeunload = (event) => {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        event.returnValue = 'unused string';
+        console.log(`dELETING USER ${name}`)
+        socket.emit('deleteUser', name);
+    }
+    //const SERVER = "https://detla-chat-server.herokuapp.com/";
+    const SERVER = "http://localhost:8080/";
     const [status, setStatus] = useState("not connected");
     const [temporaryMessage, setTemporaryMessage] = useState("");
     const [message, setMessage] = useState(null);
     const [socket] = useState(() => {
         return socketClient(SERVER);
     });
-    const location = useLocation();
     const [onlineCount, setOnlineCount] = useState(0);
-    const [name, setName] = useState(location.state?.name || "Guest");
     const [connectedUserNames, setConnectedUserNames] = useState([]);
     const messagesEndRef = useRef(null);
     const messagesRef = useRef(null);
+/*    useEffect(() => {
+        if (location.state?.name === null) return;
+        setName(location.state?.name);
+    }, [location.state?.name])*/
 
-    const displayCurrentName = () => {
-        if (location.state?.name) {
-            return location.state.name;
+/*    useEffect(() => {
+        const unloadCallback = (event) => {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            event.returnValue = "";
+            console.log(`dELETING USER ${name}`)
+            socket.emit('deleteUser', name);
+            return "";
+        };
+
+        window.addEventListener("beforeunload", unloadCallback);
+        return () => window.removeEventListener("beforeunload", unloadCallback);
+    }, []);*/
+
+/*    useEffect(() => {
+        setName(location.state?.name);
+    }, location.state?.name)
+
+    window.addEventListener('beforeunload',  (e) => {
+        console.log(`dELETING USER ${name}`)
+        socket.emit('deleteUser', name);
+        for (let i = 0; i < 500000000; i++) { }
+        for (let i = 0; i < 500000000; i++) { }
+        for (let i = 0; i < 500000000; i++) { }
+        for (let i = 0; i < 500000000; i++) { }
+        for (let i = 0; i < 500000000; i++) { }
+        return undefined;
+    });*/
+/*    const handleTabClosing = () => {
+        socket.emit('deleteUser', name);
+    }
+
+    const alertUser = (event) => {
+        event.preventDefault()
+        event.returnValue = ''
+    }
+    useEffect(() => {
+        window.addEventListener('beforeunload', alertUser)
+        window.addEventListener('unload', handleTabClosing)
+        return () => {
+            window.removeEventListener('beforeunload', alertUser)
+            window.removeEventListener('unload', handleTabClosing)
+        }
+    }, [])*/
+
+    const displayCurrentName = (tName) => {
+        console.log(tName);
+        if (name) {
+            return name;
         }
         return "Guest";
     };
@@ -36,6 +119,9 @@ export default function App() {
                 setConnectedUserNames(JSON.parse(JSON.stringify(data)).names);
 
             });
+            socket.on("logMessage", (logMessage) => {
+                console.log(logMessage);
+            })
             socket.on("message", (message) => {
                 const chat = messagesRef.current;
                 chat.insertAdjacentHTML(
@@ -55,9 +141,6 @@ export default function App() {
                 messagesEndRef.current?.scrollIntoView();
             });
         });
-        return () => {
-            socket.off("connection");
-        };
     }, [socket]);
 
     useEffect(() => {
@@ -90,7 +173,7 @@ export default function App() {
                                     console.log("DELETETHEUSEWR" + name);
                                     socket.emit('deleteUser', name);
                                 }}>
-                                    {displayCurrentName()}
+                                    {name}
                                 </Link>
                             </div>
                         </div>
@@ -129,8 +212,9 @@ export default function App() {
                                     console.log("DELETETHEUSEWR" + name);
                                     socket.emit('deleteUser', name);
                                 }} className={style.TextGreen} to="/Login">
-                                    {displayCurrentName()}
+                                    {name}
                                 </Link>
+
                             </div>
                             <div className={style.TestOnline}>
                                 <div>Online: {onlineCount}</div>
