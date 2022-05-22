@@ -1,6 +1,5 @@
 import React, {useEffect, useRef, useState} from "react";
 import {Link, useLocation, useNavigate} from "react-router-dom";
-import {useBeforeunload} from "react-beforeunload";
 import socketClient from "socket.io-client";
 import style from "./App.module.css";
 

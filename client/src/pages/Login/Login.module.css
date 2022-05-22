@@ -1,79 +1,225 @@
-h1 {
-    font-weight: 400;
-    color: rgb(33, 33, 33);
-    font-size: 7em;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
+
+
+body{
+    font-family: 'Inter', sans-serif;
+    height: 100vh;
+    width: 100%;
 }
-.styles.text {
-    font-family: 'Roboto', sans-serif;
+
+main {
+    height: 100vh;
 }
-.container {
+
+
+
+.Wrapper {
+    width: 100vw;
+    height: 100%;
+    padding: 0%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.Header {    
+    width: 100%;
+    height: 50%;
+    display: flex;
+
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.Footer {
+    padding: 0%;    
+    width: 100%;
+    height: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.ContentWrapper {
+    padding-top: 2%;
+    height: 70%;
+    width: 40%;
+
+    display: flex;
+    justify-content: center;
+}
+
+.Content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    min-width: 300px;
+    height: 70%;
+    
+}
+
+.InputBox {
+    width: 100%;
+    height: 59%;
+
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.wrapper {
+
+
+
+.Text {
+    text-align: center;
+    font-size: 420%;
+    font-weight: bold;
+    padding-bottom: 1%;
+    letter-spacing: 1.2px;
+}
+
+.ColorText {
+    color: #3144F3;
+}
+
+.BtnBox {
+    width: 100%;
+    min-width: 300px;
+    height: 50%;
+
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.BtnNext {
+    padding-top: 1%;
+    display: flex;
+    justify-content: start;
+    height: 40%;
+    width: 44%;
+}
+
+.BtnRandomName {
+    padding-top: 1%;
+    display: flex;
+    justify-content: end;
+    height: 40%;
+    width: 44%;
+}
+
+form {
+    width: 100%;
     height: 100%;
-    padding-top: 200px;
 }
-.wrapper h1 {
-    padding-bottom: 75px;
+
+.Btn {
+	display: inline-block;
+	border: 0;
+	background-color: #E7E7E7;
+	color: black;
+	text-decoration: none;
+
+    height: 100%;
+    width: 100%;
+
+    font-size: 16px;
+    letter-spacing: 1.2px;
 }
-.input {
-    height: 6vh;
-    width: 25vw;
-    background-color: rgb(200, 200, 200);
-    outline: rgb(91, 136, 63) solid 1px;
+
+.Btn:hover {
+    background-color: #cccccc;
+    transition: all 0.4s ease;
+}
+
+.Input {
+    background-color: #E7E7E7;
+    height: 40%;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
     border: none;
-    padding-left: 1em;
-    font-size: 1.5em;
+    padding-left: 2%;
+    padding-right: 2%;
+
+    font-size: 16px;
+    letter-spacing: 1.2px;
 }
-.input::placeholder {
-    color: black;
-    font-weight: 700;
+
+.Input:focus {
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
 }
-#bold {
-    font-weight: 700;
-}
-#green {
-    color: rgb(91, 136, 63);
-}
-.navigateButton {
-    background-color: rgb(91, 136, 63);
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    margin: 75px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 1em;
-    cursor: pointer;
-}
-.navigateButton {
-    background-color: rgb(91, 136, 63);
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    margin: 75px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 1em;
-    cursor: pointer;
-}
-@media screen and (max-width: 1366px) {
-    h1 {
-        margin: 20px;
-        font-size: 3em;
+
+@media screen and (max-width: 1000px) {
+    .BtnNext {
+        height: 50%;
     }
-    .input {
-        width: 75vw;
-        padding: 20px;
+    
+    .BtnRandomName {
+        height: 50%;
     }
-    .wrapper {
-        padding-top: 50px;
+
+    .Input {
+        height: 45%;
     }
+}
+
+@media screen and (max-height: 675px) {
+    .BtnNext {
+        height: 70%;
+    }
+    
+    .BtnRandomName {
+        height: 70%;
+    }
+
+    .Input {
+        height: 45%;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+.Text {
+    font-size: 600%;
+}
+}
+
+@media screen and (min-width: 2000px) {
+.Text {
+    font-size: 680%;
+}
+.Btn {
+    font-size: 180%;
+}
+.Input {
+    font-size: 180%;
+}
+}
+
+@media screen and (min-width: 1500px) {
+.Btn {
+    font-size: 100%;
+}
+.Input {
+    font-size: 100%;
+}
+}
+
+@media screen and (min-width: 1200px) {
+.Btn {
+    font-size: 120%;
+}
+.Input {
+    font-size: 120%;
+}
+}
+
+@media screen and (max-width: 400px) {
+.Text {
+    font-size: 360%;
+}
 }

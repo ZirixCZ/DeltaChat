@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import styles from "./Login.module.css";
+import style from "./Login.module.css";
 
 export default function Login() {
   const [nameBuffer, setNameBuffer] = useState("Guest");
@@ -175,47 +175,61 @@ export default function Login() {
     navigate("/", { state: { name: name } });
   }, [name]);
 
-  const Button = styled.button`
-    background-color: ${({ color }) => color || "rgb(91, 136, 63)"};
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    margin: 50px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 1em;
-    cursor: pointer;
-  `;
+  // const Button = styled.button`
+  //   background-color: ${({ color }) => color || "rgb(91, 136, 63)"};
+  //   border: none;
+  //   color: white;
+  //   padding: 15px 32px; 
+  //   margin: 50px;
+  //   text-align: center;
+  //   text-decoration: none;
+  //   display: inline-block;
+  //   font-size: 1em;
+  //   cursor: pointer;
+  // `;
 
   return (
     <>
-      <main className={styles.container}>
-        <div className={styles.wrapper}>
-          <h1 className={styles.text}>
-            Vítejte v{" "}
-            <span id={styles.bold}>
-              <span id={styles.green}>Delta</span>Chatu
-            </span>
-          </h1>
-          <input
-            className={styles.input}
+      <main>
+
+        <div className={style.Wrapper}>
+        <div className={style.Header}>
+            <div className={style.Text}>
+                Vítejte v <span className={style.ColorText}>Delta</span>Chatu
+            </div>
+
+        </div>
+        <div className={style.Footer}>
+            <div className={style.ContentWrapper}>
+                <div className={style.Content}>
+                    <div className={style.InputBox}>
+                        <input
+            className={style.Input}
             placeholder="Vaše přezdívka.."
             onChange={(e) => {
               setNameBuffer(e.target.value);
             }}
-          ></input>
-          <div className="button-wrapper">
-            <Button
-              className={styles.navigateButton}
+                        ></input>
+                    </div>
+                    <div className={style.BtnBox}>
+
+                        <div className={style.BtnNext}>
+                                <form action="index.html">
+                                  <button
+              className={style.Btn}
               onClick={() => {
                 setName(nameBuffer);
               }}
             >
               Pokračovat
-            </Button>
-            <Button
-              color="rgb(33, 33, 33)"
+                                  </button>
+                                </form>
+                        </div>
+
+                        <div className={style.BtnRandomName}>
+                                <form action="index.html">
+                                  <button
+              className={style.Btn}
               onClick={() => {
                 setName(
                   parrotNames[Math.floor(Math.random() * parrotNames.length)]
@@ -223,9 +237,19 @@ export default function Login() {
               }}
             >
               Náhodné jméno
-            </Button>
-          </div>
+                                  </button>
+                                </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
         </div>
+        </div>
+
+      
+
       </main>
     </>
   );
