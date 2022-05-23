@@ -1,7 +1,9 @@
 import React, {useEffect, useRef, useState} from "react";
 import {Link, useLocation, useNavigate} from "react-router-dom";
 import socketClient from "socket.io-client";
-import style from "./App.module.css";
+import mystyle from "./bundles/ModuleCss/My.module.css";
+import LeftSide from "./bundles/LeftComponents/LeftSide";
+import RightSide from "./bundles/RightComponents/RightSide";
 
 export default function App() {
     const location = useLocation();
@@ -157,8 +159,12 @@ export default function App() {
 
     return (
         <>
-            <main className={style.Container}>
-                <aside className={style.LeftContainer}>
+            <main className={mystyle.Wrapper}>
+                <LeftSide/>
+                <RightSide/>
+
+
+                {/* <aside className={style.LeftContainer}>
                     <div className={style.AccountContainer}>
                         <div className={style.AccountHeader}>
                             <div>
@@ -200,9 +206,9 @@ export default function App() {
                             </ul>
                         </div>
                     </div>
-                </aside>
+                </aside> */}
 
-                <div className={style.RightContainer}>
+                {/* <div className={style.RightContainer}>
                     <div className={style.Test}>
                         <div className={style.TestContent}>
                             <div className={style.TestName}>
@@ -259,7 +265,7 @@ export default function App() {
                             </div>
                         </form>
                     </div>
-                </div>
+                </div> */}
             </main>
         </>
     );

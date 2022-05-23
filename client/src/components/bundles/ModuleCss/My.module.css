@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+  }
+
+html,body {
+    font-family: 'Inter', sans-serif;
+    padding: 0%;
+    height: 100%;
+    width: 100%;
+    font-size: 100%;
+}
+
+.Wrapper {
+    background-color: rgb(255, 255, 255);
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    
+    flex-direction: row;
+
+    top: 0%;
+    left: 0%;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(241, 241, 241);
+    position: absolute;
+}
+
+.LeftSideBar {
+    background-color: rgb(255, 255, 255);
+    height: 100%;
+    width: 24%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Header {
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    height: 15%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Footer {
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Text {
+    text-align: center;
+    font-size: 300%;
+    font-weight: bold;
+    padding-bottom: 1%;
+    letter-spacing: 1.2px;
+}
+
+.ColorText {
+    color: #3144F3;
+}
+
+.BetweenLine {
+    background-color: rgb(0, 0, 0);
+    width: 80%;
+    height: 0.3%;
+}
+
+.PeopleContent {
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.NumOfPeople {
+    height: 10%;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.BigSizeText {
+    font-size: 150%;
+}
+
+.ListContainer {
+    width: 100%;
+    height: 85%;
+    overflow-x: hidden;
+    overflow: scroll;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+.PeopleList {
+    height: 4%;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+/* ///////////////////////////////////////////////////////////////////////////// */
+
+.RightSideBar {
+    background-color: rgb(254, 254, 254);
+    height: 100%;
+    width: 76%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.HeaderBar {
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    height: 6%;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.Name {
+    font-size: 140%;
+    padding-right: 1%;
+}
+
+.ManIcon {
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 30px;
+}
+
+.ChatContent {
+    background-color: #F9F9F9;
+    width: 100%;
+    height: 88%;
+
+    overflow-x: hidden;
+    overflow: scroll;
+
+    display: flex;
+    flex-direction: column-reverse;
+
+}
+
+.Message {
+    width: 100%;
+    height: min-content;
+    
+    padding-left: 3%;
+    padding-top: 0.8%;
+    padding-bottom: 0.8%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    
+}
+
+.MsgName {
+    padding-bottom: 0.2%;
+    font-size: 120%;
+    font-weight: 600;
+}
+
+.UserConnected {
+    width: 100%;
+    height: min-content;
+
+    padding-left: 3%;
+    padding-top: 0.8%;
+    padding-bottom: 0.8%;
+
+    display: flex;
+    align-items: center;
+}
+
+.UserDisConnected {
+    width: 100%;
+    height: min-content;
+
+    padding-left: 3%;
+    padding-top: 0.8%;
+    padding-bottom: 0.8%;
+
+    display: flex;
+    align-items: center;
+}
+
+.JImg {
+    height: 25px;
+    width: 25px;
+}
+
+.MsgUserName {
+    font-weight: bold;
+    padding-right: 0.5%;
+    padding-left: 1%;
+}
+
+
+
+
+.MessageInputBar {
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    height: 6%;
+}
+
+.Input {
+    background-color: #ffffff;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    padding-left: 2%;
+    padding-right: 2%;
+
+    font-size: 16px;
+    letter-spacing: 1.2px;
+}
+
+.Input:focus {
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+}
