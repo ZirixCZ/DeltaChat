@@ -45,6 +45,7 @@ export default function App() {
     const [status, setStatus] = useState("not connected");
     const [temporaryMessage, setTemporaryMessage] = useState("");
     const [message, setMessage] = useState(null);
+    const [newlyWrittenMessage, setNewlyWrittenMessage] = useState(null);
     const [socket] = useState(() => {
         return socketClient(SERVER);
     });
@@ -52,6 +53,9 @@ export default function App() {
     const [connectedUserNames, setConnectedUserNames] = useState([]);
     const messagesEndRef = useRef(null);
     const messagesRef = useRef(null);
+
+
+
 /*    useEffect(() => {
         if (location.state?.name === null) return;
         setName(location.state?.name);
@@ -120,27 +124,13 @@ export default function App() {
                 setConnectedUserNames(JSON.parse(JSON.stringify(data)).names);
 
             });
+            socket.on("message", (message) => {
+                console.log(JSON.stringify(JSON.parse(message).message))
+                setNewlyWrittenMessage(JSON.stringify(JSON.parse(message).message));
+            });
             socket.on("logMessage", (logMessage) => {
                 console.log(logMessage);
             })
-            socket.on("message", (message) => {
-                const chat = messagesRef.current;
-                chat.insertAdjacentHTML(
-                    "afterbegin",
-                    `
-        <div className={style.MessageContainer}>
-          <h3 className={style.UserName} style={{ color: "red" }}>
-            ${JSON.parse(message).name}
-          </h3>
-
-          <h4 className={style.UserText}>
-            ${JSON.parse(message).message}
-          </h4>
-        </div>
-        `
-                );
-                messagesEndRef.current?.scrollIntoView();
-            });
         });
     }, [socket]);
 
@@ -157,11 +147,18 @@ export default function App() {
         });
     }, [message]);
 
+    const props = {
+        name: name,
+        count: onlineCount,
+        usernames: connectedUserNames,
+        newMessage: newlyWrittenMessage,
+    }
+    console.log(props.newMessage)
     return (
         <>
             <main className={mystyle.Wrapper}>
-                <LeftSide/>
-                <RightSide/>
+                <LeftSide properties={props}/>
+                <RightSide name={props.name} message={props.newMessage}/>
 
 
                 {/* <aside className={style.LeftContainer}>

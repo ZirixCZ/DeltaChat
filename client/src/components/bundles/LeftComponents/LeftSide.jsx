@@ -3,11 +3,11 @@ import mystyle from "../ModuleCss/My.module.css";
 import Footer from "./Footer";
 import Header from "./Header";
 
-const LeftSide = () => {
+const LeftSide = (props) => {
     return (
         <div className={mystyle.LeftSideBar}>
             <Header/>
-            <Footer/>
+            <Footer properties={props.properties}/>
         </div>
 
 )}

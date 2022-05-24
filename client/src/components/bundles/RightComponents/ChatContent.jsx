@@ -1,21 +1,37 @@
-import React from "react";
+import React, {useEffect, useRef} from "react";
 import mystyle from "../ModuleCss/My.module.css";
-import LImgIcon from '../icons/LImgIcon.png';
-import JImgIcon from '../icons/JImgIcon.png';
+import UserConnected from "./UserEvents/UserConnected";
+import UserDisconnected from "./UserEvents/UserDisconnected";
 
-const ChatContent = () => {
+const ChatContent = (props) => {
+    const chatContent = useRef();
+
+    const properties = {
+        message: props.messages,
+        name: props.name,
+
+    }
+
+    useEffect(() => {
+        if (props.message === null || props.message === undefined) return;
+        console.log(`name: ${props.name}, message: ${props.message}`)
+        const chat = chatContent.current;
+        chat.insertAdjacentHTML(
+            "afterbegin",
+            `<div className={mystyle.Message}>
+            <UserConnected props={properties}/>
+        </div>`
+        );
+        chatContent.current?.scrollIntoView();
+    }, [props.message])
+
     return (
-        <div className={mystyle.ChatContent}>
-                <div className={mystyle.UserConnected}> <img src={JImgIcon}></img> <span className={mystyle.MsgUserName}>Jmeno </span> se připojil.</div>
-
-                <div className={mystyle.Message}>
-                    <div className={mystyle.MsgName}>Denys</div>
-                    <div className={mystyle.MsgText}>Hi i from Delta ss!</div>
-                </div>
-
-                <div className={mystyle.UserDisConnected}> <img src={LImgIcon}></img> <span className={mystyle.MsgUserName}>Jmeno </span> se odpojil.</div>
+        <div className={mystyle.ChatContent} ref={chatContent}>
+            <UserConnected/>
+            <UserDisconnected/>
 
         </div>
-)}
+    )
+}
 
 export default ChatContent;

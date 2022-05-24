@@ -3,6 +3,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ReactDOM from 'react-dom';
 import App from './components/App.jsx';
 import Login from './pages/Login/Login.jsx';
+import socket from "./modules/Socket";
+
+
 
 ReactDOM.render(
   <React.StrictMode>
