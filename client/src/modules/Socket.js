@@ -1,3 +1,3 @@
 import io from "socket.io-client";
-const SERVER = "http://localhost:8080"
+const SERVER = "https://detla-chat-server.herokuapp.com/"
 export default io(SERVER);
