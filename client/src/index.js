@@ -1,20 +1,17 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 import ReactDOM from 'react-dom';
 import App from './components/App.jsx';
 import Login from './pages/Login/Login.jsx';
-import socket from "./modules/Socket";
-
-
 
 ReactDOM.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route  path="/" element={<App />} />
-        <Route path="/login" element={<Login />} />
-      </Routes>
-    </BrowserRouter>
-  </React.StrictMode>,
-  document.getElementById('root')
+    <React.StrictMode>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<App/>}/>
+                <Route path="/login" element={<Login/>}/>
+            </Routes>
+        </BrowserRouter>
+    </React.StrictMode>,
+    document.getElementById('root')
 );

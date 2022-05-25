@@ -10,6 +10,7 @@ const LeftSide = (props) => {
             <Footer properties={props.properties}/>
         </div>
 
-)}
+    )
+}
 
 export default LeftSide;

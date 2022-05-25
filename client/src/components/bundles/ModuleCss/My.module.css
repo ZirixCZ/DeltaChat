@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
-  }
+}
 
-html,body {
+html, body {
     font-family: 'Inter', sans-serif;
     padding: 0%;
     height: 100%;
@@ -21,7 +22,7 @@ html,body {
     display: flex;
     justify-content: center;
     justify-items: center;
-    
+
     flex-direction: row;
 
     top: 0%;
@@ -123,7 +124,6 @@ html,body {
 }
 
 
-
 /* ///////////////////////////////////////////////////////////////////////////// */
 
 .RightSideBar {
@@ -170,10 +170,16 @@ html,body {
 
 }
 
+.NavBarLink {
+    color: #3144F3;
+    font-weight: bold;
+    text-decoration: none;
+}
+
 .Message {
     width: 100%;
     height: min-content;
-    
+
     padding-left: 3%;
     padding-top: 0.8%;
     padding-bottom: 0.8%;
@@ -182,7 +188,7 @@ html,body {
     flex-direction: column;
     justify-content: center;
 
-    
+
 }
 
 .MsgName {
@@ -225,8 +231,6 @@ html,body {
     padding-right: 0.5%;
     padding-left: 1%;
 }
-
-
 
 
 .MessageInputBar {

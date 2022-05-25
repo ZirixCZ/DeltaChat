@@ -15,15 +15,30 @@ const ChatContent = (props) => {
     useEffect(() => {
         socket.on("message", (message) => {
             setCurrentMessage({
-                message: JSON.stringify(JSON.parse(message).message),
-                name: JSON.stringify(JSON.parse(message).name)
+                message: JSON.parse(message).message,
+                name: JSON.parse(message).name,
+                isOnConnected: false,
+                isOnDisconnected: false,
             });
         });
         socket.on("addUser", (name) => {
             setNewConnectedUser(name)
+            setCurrentMessage({
+                message: false,
+                name: JSON.parse(name),
+                isOnConnected: true,
+                isOnDisconnected: false,
+            });
         });
         socket.on("deleteUser", (name) => {
             setNewDisconnectedUser(name)
+            console.log(name)
+            setCurrentMessage({
+                message: false,
+                name: name,
+                isOnConnected: false,
+                isOnDisconnected: true,
+            });
         })
     }, [socket])
 
@@ -31,6 +46,7 @@ const ChatContent = (props) => {
         if (!currentMessage) return;
 
         let messageArray = [...messages];
+        console.log(currentMessage)
         messageArray.push(currentMessage)
         setMessages(messageArray);
     }, [currentMessage])
@@ -47,9 +63,12 @@ const ChatContent = (props) => {
 
     return (
         <div className={mystyle.ChatContent} ref={chatContent}>
-            <UserConnected/>
-            <UserDisconnected/>
             {messages.map((message) => {
+                if (message.isOnConnected) {
+                    return <UserConnected name={message.name}/>
+                } else if (message.isOnDisconnected) {
+                    return <UserDisconnected name={message.name}/>
+                }
                 return <NewMessage message={message.message} name={message.name}/>
             })}
         </div>

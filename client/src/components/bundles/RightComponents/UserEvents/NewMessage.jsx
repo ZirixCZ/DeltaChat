@@ -1,8 +1,5 @@
 import React from 'react';
 import mystyle from "../../ModuleCss/My.module.css";
-import socket from "../../../../modules/Socket";
-import UserDisconnected from "./UserDisconnected";
-import UserConnected from "./UserConnected";
 
 const NewMessage = (props) => {
     return (
@@ -13,4 +10,4 @@ const NewMessage = (props) => {
     )
 }
 
-export default  NewMessage;
+export default NewMessage;
