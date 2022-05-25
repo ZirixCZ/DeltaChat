@@ -35,11 +35,12 @@ const stateBroadcast = () => {
 io.on('connection', (socket) => {
     socket.emit('connection', null);
     console.log(`new client connected\nid:${socket.id}`);
-    stateBroadcast();
+
     socket.on('message', (message) => {
         console.log(JSON.stringify(message))
         io.emit('message', JSON.stringify(message));
     })
+
     socket.on('addUser', (name) => {
         connecteduserNames.push(name);
         removeNameFromArray();
@@ -47,17 +48,18 @@ io.on('connection', (socket) => {
         console.log(connecteduserNames);
         io.emit('addUser', JSON.stringify(name));
     })
+
     socket.on('deleteUser', (name) => {
         console.log(`erasing ${name}`)
         removeNameFromArray(name);
+        console.log("BRUH NOT POSSIBLE")
         stateBroadcast();
         io.emit('deleteUser', name);
     })
+
     socket.on('disconnect', (reason) => {
-        console.log(reason)
         console.log(`client disconnected ${reason}`);
-        removeNameFromArray(reason);
-        stateBroadcast();
         io.sockets.emit("logMessage", "user has disconnected");
     })
+
 })
