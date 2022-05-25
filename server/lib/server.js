@@ -42,6 +42,7 @@ io.on('connection', (socket) => {
     })
 
     socket.on('addUser', (name) => {
+        if (name === "Guest") return;
         connecteduserNames.push(name);
         removeNameFromArray();
         stateBroadcast();

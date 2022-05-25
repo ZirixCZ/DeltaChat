@@ -8,8 +8,6 @@ import socket from "../../../modules/Socket";
 const ChatContent = (props) => {
     const [messages, setMessages] = useState([]);
     const [currentMessage, setCurrentMessage] = useState(null);
-    const [newConnectedUser, setNewConnectedUser] = useState();
-    const [newDisconnectedUser, setNewDisconnectedUser] = useState();
     const chatContent = useRef();
 
     useEffect(() => {
@@ -22,7 +20,6 @@ const ChatContent = (props) => {
             });
         });
         socket.on("addUser", (name) => {
-            setNewConnectedUser(name)
             setCurrentMessage({
                 message: false,
                 name: JSON.parse(name),
@@ -31,7 +28,6 @@ const ChatContent = (props) => {
             });
         });
         socket.on("deleteUser", (name) => {
-            setNewDisconnectedUser(name)
             console.log(name)
             setCurrentMessage({
                 message: false,
@@ -49,20 +45,11 @@ const ChatContent = (props) => {
         console.log(currentMessage)
         messageArray.push(currentMessage)
         setMessages(messageArray);
+        chatContent.current?.scrollIntoView();
     }, [currentMessage])
 
-    useEffect(() => {
-        if (newConnectedUser === null || newConnectedUser === undefined) return;
-        console.log(`User has connected ${newConnectedUser}`)
-    }, [newConnectedUser])
-
-    useEffect(() => {
-        if (newDisconnectedUser === null || newDisconnectedUser === undefined) return;
-        console.log(`User has disconnected ${newDisconnectedUser}`)
-    }, [newDisconnectedUser])
-
     return (
-        <div className={mystyle.ChatContent} ref={chatContent}>
+        <div className={mystyle.ChatContent}>
             {messages.map((message) => {
                 if (message.isOnConnected) {
                     return <UserConnected name={message.name}/>
@@ -71,6 +58,7 @@ const ChatContent = (props) => {
                 }
                 return <NewMessage message={message.message} name={message.name}/>
             })}
+            <div ref={chatContent} className={mystyle.ChatBorder}></div>
         </div>
     )
 }

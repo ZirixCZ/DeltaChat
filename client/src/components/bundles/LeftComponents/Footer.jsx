@@ -11,9 +11,11 @@ const Footer = (props) => {
                     className={mystyle.BigSizeText}>{(props.properties.count > 1) ? `Právě připojeno: ${props.properties.count}` : `Jste tu jen vy`}</span>
                 </div>
                 <div className={mystyle.ListContainer}>
-                    {props.properties.usernames.map((name) => {
-                        return (<User name={name}/>)
-                    })}
+                    <div className={mystyle.ListContainerInner}>
+                        {props.properties.usernames.map((name) => {
+                            return (<User name={name}/>)
+                        })}
+                    </div>
                 </div>
             </div>
         </div>

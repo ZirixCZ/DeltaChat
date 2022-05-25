@@ -15,7 +15,7 @@ const User = (props) => {
         }, [props.name])*/
 
     return (
-        <div className={mystyle.PeopleList}>● {props.name}</div>
+        <div className={mystyle.PeopleList}>{props.name}</div>
     )
 }
 

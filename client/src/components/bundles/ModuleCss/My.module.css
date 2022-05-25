@@ -104,10 +104,16 @@ html, body {
 }
 
 .ListContainer {
-    width: 100%;
+    width: 75%;
     height: 85%;
-    overflow-x: hidden;
+}
+
+.ListContainerInner {
     overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
 }
 
 ::-webkit-scrollbar {
@@ -116,8 +122,10 @@ html, body {
 
 .PeopleList {
     height: 4%;
-    width: 100%;
-
+    width: fit-content;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    font-weight: bold;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -160,14 +168,17 @@ html, body {
 .ChatContent {
     background-color: #F9F9F9;
     width: 100%;
-    height: 88%;
-
-    overflow-x: hidden;
-    overflow: scroll;
-
+    height: 88vh;
+    scroll-snap-align: end none;
     display: flex;
     flex-direction: column;
+    overflow: scroll;
+}
 
+.ChatBorder {
+    position: relative;
+    padding-bottom: 5rem;
+    border: 0;
 }
 
 .NavBarLink {

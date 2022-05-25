@@ -4,9 +4,12 @@ import JImgIcon from '../../icons/JImgIcon.png';
 
 const UserConnected = (props) => {
     return (
-        <div className={mystyle.UserConnected}><img src={JImgIcon}></img> <span
-            className={mystyle.MsgUserName}>{props.name}</span> se připojil.</div>
-    )
+        <>
+            {(props.name === "Guest") ? null : <div className={mystyle.UserConnected}><img src={JImgIcon}></img> <span
+                className={mystyle.MsgUserName}>{props.name}</span> se připojil.</div> }
+
+        </>
+        )
 }
 
 export default UserConnected;

@@ -9,6 +9,10 @@ export default function App() {
     const location = useLocation();
     const navigate = useNavigate();
     const [name, setName] = useState(location.state?.name || "Guest");
+    useEffect(() => {
+        if (name !== "Guest") return;
+        navigate("/login");
+    }, [name])
 
     window.onbeforeunload = (event) => {
         event.preventDefault();
@@ -26,6 +30,7 @@ export default function App() {
     const [onlineCount, setOnlineCount] = useState(0);
     const [connectedUserNames, setConnectedUserNames] = useState([]);
     const isUnhooked = useRef();
+
 
     useEffect(() => {
         socket.on("broadcast", (data) => {
@@ -47,10 +52,12 @@ export default function App() {
     }
     return (
         <>
-            <main className={mystyle.Wrapper}>
-                <LeftSide properties={props}/>
-                <RightSide name={props.name} message={props.newMessage}/>
-            </main>
+            {
+                name ? <main className={mystyle.Wrapper}>
+                    <LeftSide properties={props}/>
+                    <RightSide name={props.name} message={props.newMessage}/>
+                </main> : <h1>Nejdříve se musíte pojmenovat</h1>
+            }
         </>
     );
 }
