@@ -19,14 +19,14 @@ export default function App() {
     }
 
     //const SERVER = "https://detla-chat-server.herokuapp.com/";
-    const SERVER = "http://localhost:8080/";
+    //const SERVER = "http://localhost:8080/";
     const [status, setStatus] = useState("not connected");
     const [temporaryMessage, setTemporaryMessage] = useState("");
     const [message, setMessage] = useState(null);
     const [newlyWrittenMessage, setNewlyWrittenMessage] = useState(null);
-    const [socket] = useState(() => {
+/*    const [socket] = useState(() => {
         return socketClient(SERVER);
-    });
+    });*/
     const [onlineCount, setOnlineCount] = useState(0);
     const [connectedUserNames, setConnectedUserNames] = useState([]);
     const messagesEndRef = useRef(null);
