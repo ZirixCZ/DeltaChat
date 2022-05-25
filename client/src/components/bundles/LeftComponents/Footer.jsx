@@ -3,7 +3,6 @@ import mystyle from "../ModuleCss/My.module.css";
 import User from './User';
 
 const Footer = (props) => {
-    console.log(props.properties.usernames)
     return (
         <div className={mystyle.Footer}>
         <div className={mystyle.BetweenLine}></div>

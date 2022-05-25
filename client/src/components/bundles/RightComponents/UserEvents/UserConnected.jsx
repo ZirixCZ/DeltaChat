@@ -1,6 +1,6 @@
 import React from 'react';
 import mystyle from "../../ModuleCss/My.module.css";
-import JImgIcon from '../../icons/LImgIcon.png';
+import JImgIcon from '../../icons/JImgIcon.png';
 
 const UserConnected = (props) => {
     return (

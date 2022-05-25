@@ -1,8 +1,8 @@
 const http = require('http').createServer();
 const io = require("socket.io")(http, {
     cors: {
-        //origin: "http://localhost:3000",
-        origin: "*",
+        origin: "http://localhost:3000",
+        //origin: "*",
         methods: ["GET", "POST"],
         allowedHeaders: ["header"],
         credentials: true
@@ -45,11 +45,13 @@ io.on('connection', (socket) => {
         removeNameFromArray();
         stateBroadcast();
         console.log(connecteduserNames);
+        io.emit('addUser', JSON.stringify(name));
     })
     socket.on('deleteUser', (name) => {
         console.log(`erasing ${name}`)
         removeNameFromArray(name);
         stateBroadcast();
+        io.emit('deleteUser', name);
     })
     socket.on('disconnect', (reason) => {
         console.log(reason)

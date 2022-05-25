@@ -7,12 +7,11 @@ import ChatContent from "./ChatContent";
 import MessageInputBar from "./MessageInputBar";
 
 const RightSide = (props) => {
-    console.log(`name: ${props.name}, message: ${props.message}`)
     return (
         <div className={mystyle.RightSideBar}>
             <NavBar properties={props.properties}/>
             <ChatContent name={props.name} message={props.message}/>
-            <MessageInputBar/>
+            <MessageInputBar name={props.name}/>
         </div>
 )}
 
