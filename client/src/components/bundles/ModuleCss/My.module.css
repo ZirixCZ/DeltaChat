@@ -145,6 +145,11 @@ html, body {
     flex-direction: column;
 }
 
+.HeaderBarTest{
+    display: none;
+    height: 6%;
+}
+
 .HeaderBar {
     background-color: rgb(255, 255, 255);
     width: 100%;
@@ -309,6 +314,11 @@ html, body {
 
 .ManIcon {
     display: none;
+}
+
+.HeaderBarTest{
+    display: flex;
+    height: 6%;
 }
 
 .HeaderBar {

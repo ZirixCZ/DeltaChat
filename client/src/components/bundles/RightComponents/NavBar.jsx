@@ -13,6 +13,7 @@ const NavBar = (props) => {
 
     return (
         <div className={mystyle.HeaderBar}>
+        <div className={mystyle.HeaderBarTest}></div>
 
         <div className={mystyle.WithOutMenu}>
             <div className={mystyle.Name}><Link to="/Login" className={mystyle.NavBarLink}>{props.name}</Link></div>
