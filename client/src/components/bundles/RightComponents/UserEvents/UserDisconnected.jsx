@@ -5,7 +5,7 @@ import LImgIcon from '../../icons/LImgIcon.png';
 const UserDisconnected = (props) => {
     return (
         <div className={mystyle.UserDisConnected}><img src={LImgIcon}></img> <span
-            className={mystyle.MsgUserName}>{props.name}</span> se odpojil.</div>
+            className={mystyle.MsgUserName}>{props.name}</span> se odpojil/a.</div>
     )
 }
 
