@@ -290,6 +290,7 @@ html, body {
 
 .WithMenu {
     display: none;
+    position: static;
 }
 
 @media screen and (max-width: 1000px) {
@@ -314,6 +315,7 @@ html, body {
     background-color: rgb(255, 255, 255);
     width: 100%;
     height: min-content;
+    position: fixed;
 
     display: flex;
     flex-direction: column;
