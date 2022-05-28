@@ -146,8 +146,9 @@ html, body {
 }
 
 .HeaderBarTest{
+    background-color: red;
     display: none;
-    height: 6%;
+    height: 20%;
 }
 
 .HeaderBar {
@@ -300,6 +301,12 @@ html, body {
 
 @media screen and (max-width: 1000px) {
 
+    .ChatBorder {
+        position: relative;
+        padding-bottom: 0.5rem;
+        border: 0;
+    }
+
 .NavBarText {
     display: flex;
     margin-left: 1rem;
@@ -433,6 +440,16 @@ html, body {
     padding-top: 0.4rem;
     padding-bottom: 0.4rem;
 
+}
+
+.ChatContent {
+    background-color: #F9F9F9;
+    width: 100%;
+    height: 94vh;
+    scroll-snap-align: end none;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
 }
 
 .MessageInputBar {

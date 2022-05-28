@@ -50,6 +50,7 @@ const ChatContent = (props) => {
 
     return (
         <div className={mystyle.ChatContent}>
+            <div className={mystyle.HeaderBarTest}></div>
             {messages.map((message) => {
                 if (message.isOnConnected) {
                     return <UserConnected name={message.name}/>
