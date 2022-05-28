@@ -6,8 +6,10 @@ import BL from '../icons/BurgerLines.png';
 import BX from '../icons/BurgerX.png';
 
 
+
 const NavBar = (props) => {
     const [isClose, setIsClose] = useState(true);
+    var a = document.getElementById("WithMenu");
 
     return (
         <div className={mystyle.HeaderBar}>
@@ -18,9 +20,13 @@ const NavBar = (props) => {
             <div className={mystyle.NavBarText}><span className={mystyle.ColorText}>Delta</span>Chat</div>
 
 
-            <button id="Burger" className={mystyle.Burger} onClick={setIsClose(!isClose)}>
-                <div id="BL"><img src={isClose ? BL : BX} alt=""></img></div>
+            <button id="Burger" className={mystyle.Burger} onClick={() => {
+                setIsClose(!isClose);
+                isClose ? a.style.display = "flex" : a.style.display = "none";
+            }}>
+               <div id="BL"><img src={isClose ? BL : BX} alt=""></img></div>
             </button>
+
         </div>
 
         <div id="WithMenu" className={mystyle.WithMenu}>
