@@ -16,7 +16,7 @@ const NavBar = (props) => {
         
 
         <div className={mystyle.WithOutMenu}>
-            <div className={mystyle.Name}><Link to="/Login" className={mystyle.NavBarLink}>{props.name}</Link></div>
+            <div className={mystyle.Name}><p to="/Login" className={mystyle.NavBarLink}>{props.name}</p></div>
             <div className={mystyle.ManIcon}><CgProfile style={{height: '2rem', width: '2rem'}}/></div>
             <div className={mystyle.NavBarText}><span className={mystyle.ColorText}>Delta</span>Chat</div>
 
