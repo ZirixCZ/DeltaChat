@@ -20,20 +20,6 @@ const MessageInputBar = (props) => {
         setWindowWidth(width)
     }
 
-    const btnStyle = {
-        display: (width > 1028) ? 'none' : 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: '10rem',
-        backgroundColor: '#262337',
-        borderRight: 'none',
-        borderTop: 'none',
-        borderBottom: 'none',
-        borderLeft: '2px solid black'
-    }
-
-    console.log(btnStyle)
-
     useEffect(() => {
         if (message === null) return;
         socket.emit("message", {
@@ -49,7 +35,7 @@ const MessageInputBar = (props) => {
                        onChange={(e) => {
                            setTemporaryMessage(e.target.value);
                        }}></input>
-                <button style={btnStyle}
+                <button className={mystyle.btnStyle}
                         onClick={(e) => {
                             e.preventDefault();
                             //let messageInput = document.getElementById("message-input");

@@ -1,10 +1,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
 
+/* :root {
+    --one-color: #262337;
+    --two-color: #2b283d;
+    --btn-color: #383450;
+    --btnhover-color: #4C466B;
+    --colortext-color: #5DC4F8;
+    --text-color: #F0F0F1;
+}
+
+:root{
+    --one-color: #1f1f1f;
+    --two-color: #121212;
+    --btn-color: #2d2d2d;
+    --btnhover-color: #363636;
+    --colortext-color: #3144F3;
+    --text-color: #F0F0F1;
+} */
+
+:root{
+    --border-color: #c2c2c2;
+    --one-color: #FFFFFF;
+    --two-color: #F9F9F9;
+    --btn-color: #E7E7E7;
+    --btnhover-color: #cdcccc;
+    --colortext-color: #3144F3;
+    --text-color: #000000;
+}
+
+
 body{
     font-family: 'Inter', sans-serif;
     height: 100vh;
     width: 100%;
-    background-color: #262337;
+    background-color: var(--one-color);
 }
 
 main {
@@ -71,6 +100,7 @@ main {
 
 
 .Text {
+    color: var(--text-color);
     text-align: center;
     font-size: 420%;
     font-weight: bold;
@@ -79,7 +109,7 @@ main {
 }
 
 .ColorText {
-    color: #5DC4F8;
+    color: var(--colortext-color);
 }
 
 .BtnBox {
@@ -116,8 +146,8 @@ form {
 .Btn {
 	display: inline-block;
 	border: 0;
-	background-color: #383450;
-	color: #F0F0F1;
+	background-color: var(--btn-color);
+	color: var(--text-color);
 	text-decoration: none;
 
     height: 100%;
@@ -128,12 +158,12 @@ form {
 }
 
 .Btn:hover {
-    background-color: #4C466B;
+    background-color: var(--btnhover-color);
     transition: all 0.4s ease;
 }
 
 .Input {
-    background-color: #383450;
+    background-color: var(--btn-color);
     height: 40%;
     width: 100%;
     box-sizing: border-box;

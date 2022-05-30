@@ -1,9 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
 
+
+
+
 * {
     margin: 0;
     padding: 0;
-    color: white;
+    color: var(--text-color);
     scroll-behavior: smooth;
 }
 
@@ -18,7 +21,6 @@ html, body {
 }
 
 .Wrapper {
-    background-color: #262337;
     height: 100%;
     width: 100%;
 
@@ -32,12 +34,11 @@ html, body {
     left: 0%;
     width: 100vw;
     height: 100vh;
-    background-color: #262337;
     position: absolute;
 }
 
 .LeftSideBar {
-    background-color: #262337;
+    border-right: 1px solid var(--border-color);
     height: 100%;
     width: 24%;
 
@@ -47,7 +48,7 @@ html, body {
 }
 
 .Header {
-    background-color: #262337;
+    background-color: var(--one-color);
     width: 100%;
     height: 15%;
 
@@ -74,17 +75,17 @@ html, body {
 }
 
 .ColorText {
-    color: #5DC4F8;
+    color: var(--colortext-color);
 }
 
 .BetweenLine {
-    background-color: rgb(0, 0, 0);
+    background-color: var(--text-color);
     width: 80%;
     height: 0.3%;
 }
 
 .PeopleContent {
-    background-color: #262337;
+    background-color: var(--one-color);
     width: 100%;
     height: 100%;
 
@@ -138,7 +139,7 @@ html, body {
 /* ///////////////////////////////////////////////////////////////////////////// */
 
 .RightSideBar {
-    background-color: #262337;
+    background-color: var(--one-color);
     height: 100%;
     width: 76%;
 
@@ -152,7 +153,7 @@ html, body {
 }
 
 .HeaderBar {
-    background-color: #262337;
+    background-color: var(--one-color);
     width: 100%;
     height: 6%;
 
@@ -174,7 +175,9 @@ html, body {
 }
 
 .ChatContent {
-    background-color: #2B283D;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--two-color);
     width: 100%;
     height: 88vh;
     scroll-snap-align: end none;
@@ -190,7 +193,7 @@ html, body {
 }
 
 .NavBarLink {
-    color: #5DC4F8;
+    color: var(--colortext-color);
     font-weight: bolder;
     text-decoration: none;
 }
@@ -254,13 +257,13 @@ html, body {
 
 
 .MessageInputBar {
-    background-color: #262337;
+    background-color: var(--one-color);
     width: 100%;
     max-height: 3rem;
 }
 
 .Input {
-    background-color: #262337;
+    background-color: var(--one-color);
     height: 100%;
     width: 100%;
     box-sizing: border-box;
@@ -298,6 +301,10 @@ html, body {
 .WithMenu {
     display: none;
     position: static;
+}
+
+.btnStyle {
+    display: none;
 }
 
 @media screen and (max-width: 1080px) {
@@ -339,7 +346,7 @@ html, body {
     justify-content: flex-end;
     align-items: center;
 
-    border-bottom: 2px solid #2A2A2A;
+    border-bottom: 2px solid var(--one-color);
 }
 
 .WithOutMenu {
@@ -389,7 +396,7 @@ html, body {
 
 
 .Burger {
-    background-color: #2A2A2A;
+    background-color: var(--btnhover-color);
     height: max-content;
     width: max-content;
 
@@ -447,7 +454,7 @@ html, body {
 .ChatContent {
     width: 80%;
     padding-top: 9.5%;
-    background-color: #F9F9F9;
+    background-color: var(--two-color);
 
     width: 100%;
     height: 90vh;
@@ -469,5 +476,16 @@ html, body {
     flex-direction: column;
     justify-content: start;
     align-items: center;
+}
+
+.btnStyle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10rem;
+    background-color: var(--one-color);
+    border-right: none;
+    border-top: none;
+    border-bottom: none;
 }
 }
