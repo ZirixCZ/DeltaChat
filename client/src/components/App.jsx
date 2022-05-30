@@ -55,7 +55,7 @@ export default function App() {
             {
                 name ? <main className={mystyle.Wrapper}>
                     <LeftSide properties={props}/>
-                    <RightSide name={props.name} message={props.newMessage}/>
+                    <RightSide properties={props} name={props.name} message={props.newMessage}/>
                 </main> : <h1>Nejdříve se musíte pojmenovat</h1>
             }
         </>

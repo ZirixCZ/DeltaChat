@@ -9,7 +9,6 @@ const LeftSide = (props) => {
             <Header/>
             <Footer properties={props.properties}/>
         </div>
-
     )
 }
 

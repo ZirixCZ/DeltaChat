@@ -4,6 +4,7 @@ import mystyle from "../ModuleCss/My.module.css";
 import {CgProfile} from 'react-icons/cg';
 import BL from '../icons/BurgerLines.png';
 import BX from '../icons/BurgerX.png';
+import User from '../LeftComponents/User';
 
 
 
@@ -37,13 +38,16 @@ const NavBar = (props) => {
 
                         <div className={mystyle.MenuBetweenLine}></div>
 
-                        <div className={mystyle.NumOfPeople}><span className={mystyle.BigSizeText}>Právě připojeno 10 lidí</span></div>
+                        <div className={mystyle.NumOfPeople}><span className={mystyle.BigSizeText}>{(props.properties.count > 1) ? `Právě připojeno: ${props.properties.count}` : `Jste tu jen vy`}</span></div>
+
+                        
 
                         <div className={mystyle.ListContainer}>
-                            <div className={mystyle.PeopleList}>● Some Jmeno</div>
-                            <div className={mystyle.PeopleList}>● Some Jmeno</div>
-                            <div className={mystyle.PeopleList}>● Some Jmeno</div>
-                            <div className={mystyle.PeopleList}>● Some Jmeno</div>
+                            <div className={mystyle.ListContainerInner}>
+                            {props.properties.usernames.map((name) => {
+                                return (<User name={name}/>)
+                            })}
+                            </div>
                         </div>
                         
                     </div> 
