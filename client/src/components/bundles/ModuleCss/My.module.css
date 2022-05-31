@@ -304,7 +304,13 @@ html, body {
 }
 
 .btnStyle {
-    display: none;
+    height: 100%;
+    display: flex;
+    border: none;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    padding-right: 1rem;
 }
 
 @media screen and (max-width: 1080px) {
@@ -467,6 +473,7 @@ html, body {
 
 .MessageInputBar {
     min-height: 3rem;
+    display: flex;
 }
 
 .ListContainerInner {
@@ -487,5 +494,6 @@ html, body {
     border-right: none;
     border-top: none;
     border-bottom: none;
+    border-left: 2px solid var(--border-color);
 }
 }

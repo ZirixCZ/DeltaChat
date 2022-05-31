@@ -59,8 +59,6 @@ const MessageInputBar = (props) => {
                     <p style={{color: '#92909B', fontWeight: 'bold'}}>Odeslat</p>
                 </button>
             </div>
-
-
         </form>
     )
 }
