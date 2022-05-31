@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
 
 
-
-
 * {
     margin: 0;
     padding: 0;
@@ -147,7 +145,7 @@ html, body {
     flex-direction: column;
 }
 
-.HeaderBarTest{
+.HeaderBarTest {
     display: none;
     height: 20%;
 }
@@ -321,179 +319,179 @@ html, body {
         border: 0;
     }
 
-.NavBarText {
-    display: flex;
-    margin-left: 1rem;
-    font-size: 240%;
-    font-weight: bold;
-    letter-spacing: 1.8px;
-}
+    .NavBarText {
+        display: flex;
+        margin-left: 1rem;
+        font-size: 240%;
+        font-weight: bold;
+        letter-spacing: 1.8px;
+    }
 
-.Name{
-    display: none;
-}
+    .Name {
+        display: none;
+    }
 
-.ManIcon {
-    display: none;
-}
+    .ManIcon {
+        display: none;
+    }
 
-.HeaderBarTest{
-    display: flex;
-    height: 6%;
-}
+    .HeaderBarTest {
+        display: flex;
+        height: 6%;
+    }
 
-.HeaderBar {
-    width: 100%;
-    height: min-content;
-    position: fixed;
+    .HeaderBar {
+        width: 100%;
+        height: min-content;
+        position: fixed;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
 
-    border-bottom: 2px solid var(--one-color);
-}
+        border-bottom: 2px solid var(--one-color);
+    }
 
-.WithOutMenu {
-    height: min-content;
-    width: 100%;
-    margin-top: 0.4rem;
-    margin-bottom: 0.4rem;
-    display: flex;
-    justify-content: space-between;
-}
+    .WithOutMenu {
+        height: min-content;
+        width: 100%;
+        margin-top: 0.4rem;
+        margin-bottom: 0.4rem;
+        display: flex;
+        justify-content: space-between;
+    }
 
-.WithMenu {
-    height: min-content;
-    width: 100%;
+    .WithMenu {
+        height: min-content;
+        width: 100%;
 
-    display: none;
-    justify-content: center;
-    transition: all 0.9s ease;
-}
+        display: none;
+        justify-content: center;
+        transition: all 0.9s ease;
+    }
 
-.Menu {
-    height: min-content;
-    width: 100%;
-    padding: 2%;
-    padding-bottom: 0%;
+    .Menu {
+        height: min-content;
+        width: 100%;
+        padding: 2%;
+        padding-bottom: 0%;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-.MenuName {
-    font-size: 160%;
-    font-weight: bold;
-    margin-bottom: 0.6rem;
-}
+    .MenuName {
+        font-size: 160%;
+        font-weight: bold;
+        margin-bottom: 0.6rem;
+    }
 
-.MenuBetweenLine {
-    height: 2px;
-    width: 80%;
-    margin-bottom: 0.6rem;
-}
+    .MenuBetweenLine {
+        height: 2px;
+        width: 80%;
+        margin-bottom: 0.6rem;
+    }
 
-.NumOfPeople {
-    margin-bottom: 0.6rem;
-}
+    .NumOfPeople {
+        margin-bottom: 0.6rem;
+    }
 
 
-.Burger {
-    background-color: white;
-    height: max-content;
-    width: max-content;
+    .Burger {
+        background-color: white;
+        height: max-content;
+        width: max-content;
 
-    margin-right: 0.8rem;
-    padding: 0.4rem;
-    padding-bottom: 0.28rem;
-    height: min-content;
-    width: min-content;
-    border-radius: 3px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    border: 0;
-}
+        margin-right: 0.8rem;
+        padding: 0.4rem;
+        padding-bottom: 0.28rem;
+        height: min-content;
+        width: min-content;
+        border-radius: 3px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        border: 0;
+    }
 
-.Burgerline {
-    border-radius: 3px;
-    margin: 10%;
-    height: 4px;
-    width: 33px;
-}
+    .Burgerline {
+        border-radius: 3px;
+        margin: 10%;
+        height: 4px;
+        width: 33px;
+    }
 
-.LeftSideBar {
-    display: none;
-}
+    .LeftSideBar {
+        display: none;
+    }
 
-.RightSideBar {
-    width: 100%;
-}
+    .RightSideBar {
+        width: 100%;
+    }
 
-.Message {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    width: 85%;
-    padding-top: 0.4rem;
-    padding-bottom: 0.4rem;
-}
+    .Message {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        width: 85%;
+        padding-top: 0.4rem;
+        padding-bottom: 0.4rem;
+    }
 
-.UserConnected {
-    padding-left: 1.5rem;
-    width: 80%;
-    padding-top: 0.4rem;
-    padding-bottom: 0.4rem;
+    .UserConnected {
+        padding-left: 1.5rem;
+        width: 80%;
+        padding-top: 0.4rem;
+        padding-bottom: 0.4rem;
 
-}
+    }
 
-.UserDisConnected {
-    padding-left: 1.5rem;
-    padding-top: 0.4rem;
-    padding-bottom: 0.4rem;
+    .UserDisConnected {
+        padding-left: 1.5rem;
+        padding-top: 0.4rem;
+        padding-bottom: 0.4rem;
 
-}
+    }
 
-.ChatContent {
-    width: 80%;
-    padding-top: 9.5%;
-    background-color: var(--two-color);
+    .ChatContent {
+        width: 80%;
+        padding-top: 9.5%;
+        background-color: var(--two-color);
 
-    width: 100%;
-    height: 90vh;
-    padding-top: 3rem;
-    scroll-snap-align: end none;
-    display: flex;
-    flex-direction: column;
-    overflow: scroll;
-}
+        width: 100%;
+        height: 90vh;
+        padding-top: 3rem;
+        scroll-snap-align: end none;
+        display: flex;
+        flex-direction: column;
+        overflow: scroll;
+    }
 
-.MessageInputBar {
-    min-height: 3rem;
-    display: flex;
-}
+    .MessageInputBar {
+        min-height: 3rem;
+        display: flex;
+    }
 
-.ListContainerInner {
-    max-height: 31.6rem;
-    overflow-y: scroll;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-}
+    .ListContainerInner {
+        max-height: 31.6rem;
+        overflow-y: scroll;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+    }
 
-.btnStyle {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 10rem;
-    background-color: var(--one-color);
-    border-right: none;
-    border-top: none;
-    border-bottom: none;
-    border-left: 2px solid var(--border-color);
-}
+    .btnStyle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 10rem;
+        background-color: var(--one-color);
+        border-right: none;
+        border-top: none;
+        border-bottom: none;
+        border-left: 2px solid var(--border-color);
+    }
 }
