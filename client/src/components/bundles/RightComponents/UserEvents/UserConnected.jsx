@@ -7,7 +7,6 @@ const UserConnected = (props) => {
         <>
             {(props.name === "Guest") ? null : <div className={mystyle.UserConnected}><img src={JImgIcon}></img> <span
                 className={mystyle.MsgUserName}>{props.name}</span> se připojil/a.</div> }
-
         </>
         )
 }
