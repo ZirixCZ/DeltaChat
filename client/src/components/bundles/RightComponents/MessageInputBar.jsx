@@ -31,7 +31,7 @@ const MessageInputBar = (props) => {
     return (
         <form className={mystyle.MessageInputBar}>
             <div style={{height: '100%', display: 'flex', flexDirection: 'row'}}>
-                <input className={mystyle.Input} type="text" value={temporaryMessage} placeholder="Pošlete zprávu..."
+                <input className={mystyle.Input} type="text" maxLength={100} value={temporaryMessage} placeholder="Pošlete zprávu..."
                        onChange={(e) => {
                            setTemporaryMessage(e.target.value);
                        }}></input>
