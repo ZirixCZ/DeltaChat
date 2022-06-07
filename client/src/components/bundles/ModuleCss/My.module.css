@@ -108,9 +108,15 @@ html, body {
 .ListContainer {
     width: 75%;
     height: 85%;
+
+    max-height: 600px;
+    overflow: scroll;
+
+    border-bottom: 1px solid var(--border-color);
 }
 
 .ListContainerInner {
+
     overflow: scroll;
     display: flex;
     flex-direction: column;
