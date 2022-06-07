@@ -7584,6 +7584,7 @@ export default function Login() {
                                     <input
                                         className={style.Input}
                                         placeholder="Vaše přezdívka.."
+                                        maxLength={10}
                                         onChange={(e) => {
                                             setNameBuffer(e.target.value);
                                         }}
